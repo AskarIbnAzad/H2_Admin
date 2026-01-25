@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.300dcb58.css",
+    "main.js": "/static/js/main.9ae3b6d9.js",
+    "static/js/453.95a62ab9.chunk.js": "/static/js/453.95a62ab9.chunk.js",
+    "static/media/questions.docx": "/static/media/questions.e254423a8792370cb0d5.docx",
+    "static/media/orange_wave.png": "/static/media/orange_wave.6375a0d76d6f035286ca.png",
+    "static/media/blue_wave.png": "/static/media/blue_wave.cf18589b4812aae8b6ca.png",
+    "index.html": "/index.html",
+    "main.300dcb58.css.map": "/static/css/main.300dcb58.css.map",
+    "main.9ae3b6d9.js.map": "/static/js/main.9ae3b6d9.js.map",
+    "453.95a62ab9.chunk.js.map": "/static/js/453.95a62ab9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.300dcb58.css",
+    "static/js/main.9ae3b6d9.js"
+  ]
+}

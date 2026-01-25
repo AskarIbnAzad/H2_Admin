@@ -1,0 +1,242 @@
+{
+    "status": true,
+    "current_page": 1,
+    "per_page": 25,
+    "total": 1,
+    "last_page": 1,
+    "articles": [
+        {
+            "id": 805,
+            "mhid": "MHID-7886926",
+            "doi": null,
+            "pmid": null,
+            "status": "Draft",
+            "is_trending": null,
+            "reviewer": null,
+          
+            "publicData": {
+                "title": {
+                    "name": "TEST 121212",
+                    "status": "Unverified"
+                }
+            },
+            "articleGeneralData": {
+                "species": [
+                    {
+                        "name": "Humans",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Pigs",
+                        "status": "Unverified"
+                    }
+                ],
+                "speciesDetails": {
+                    "Humans": {
+                        "name": null,
+                        "status": "Unverified"
+                    },
+                    "Pigs": {
+                        "name": null,
+                        "status": "Unverified"
+                    }
+                }
+            },
+            "researcherData": {
+                "speciesData": {
+                    "Humans": {
+                        "isOpen": true,
+                        "HowManyConcentrations": {
+                            "name": 1,
+                            "status": "Unverified"
+                        },
+                        "volumes": [
+                            {
+                                "value": "2",
+                                "unit": "mL",
+                                "status": "Unverified"
+                            }
+                        ],
+                        "concentrations": [
+                            {
+                                "value": "111",
+                                "unit": "mg\/L",
+                                "status": "Unverified"
+                            }
+                        ],
+                        "absoluteDoses": [
+                            {
+                                "value": "0.222",
+                                "unit": "mg\/day",
+                                "status": "Unverified"
+                            }
+                        ],
+                        "relativeDoses": [
+                            {
+                                "value": "0.003",
+                                "unit": "mg\/kg\/day",
+                                "status": "Unverified"
+                            }
+                        ],
+                        "inhalationConcentrations": [
+                            {
+                                "percentPurity": {
+                                    "name": "11111",
+                                    "status": "Unverified"
+                                },
+                                "flowRate": {
+                                    "name": "11",
+                                    "status": "Unverified"
+                                },
+                                "estimatedFiH2": {
+                                    "name": "6.79",
+                                    "status": "Unverified"
+                                },
+                                "frequency": {
+                                    "name": "11",
+                                    "status": "Unverified"
+                                },
+                                "duration": {
+                                    "name": "111",
+                                    "status": "Unverified"
+                                }
+                            }
+                        ],
+                        "wasOxyhydrogenUsed": {
+                            "name": "Yes",
+                            "status": "Unverified"
+                        },
+                        "isInhalationOpen": true,
+                        "isCellTissueOpen": true,
+                        "isIngestionOpen": true,
+                        "methods": [
+                            "N\/A",
+                            "Cell Culture \/ Tissues",
+                            "Cell free system",
+                            "Extracorporeal circulation system",
+                            "Gavage",
+                            "Hydrogen Donors",
+                            "Hydrogen-rich Saline",
+                            "Hyperbaric H2",
+                            "Ingestion of (Si)-based hydrogen-producing antioxidant",
+                            "Ingestion of calcium and magnesium",
+                            "Ingestion of dietary fibres",
+                            "Inhalation",
+                            "Intraperitoneal Infusion (Dialysis)",
+                            "Intraperitoneal injection of Hydrogen-Rich Solution",
+                            "Nanoparticles (PdH)",
+                            "Oral Hydrogen Water",
+                            "Subcutaneous injection of hydrogen",
+                            "Topical applications"
+                        ],
+                        "weight": {
+                            "name": 75,
+                            "unit": "kg",
+                            "status": "Unverified"
+                        },
+                        "deliveryMethod": {
+                            "name": "mask",
+                            "status": "Unverified",
+                            "value": "mask"
+                        },
+                        "numInhalationConcentrations": {
+                            "name": "1",
+                            "status": "Unverified",
+                            "value": "1"
+                        },
+                        "concentrationOfHydrogenForMedium": {
+                            "name": "1",
+                            "status": "Unverified",
+                            "value": "1"
+                        },
+                        "FrequencyCellCultureTissues": {
+                            "value": 1,
+                            "unit": "minutes",
+                            "status": "Unverified"
+                        },
+                        "DurationFrequencyCellCultureTissues": {
+                            "value": 1,
+                            "unit": "minutes",
+                            "status": "Unverified"
+                        },
+                        "Peakbreathhydrogen": {
+                            "name": "1",
+                            "status": "Unverified",
+                            "value": "1"
+                        },
+                        "Frequency": {
+                            "name": "1",
+                            "status": "Unverified",
+                            "value": "1"
+                        },
+                        "IngestionDurationfrequency": {
+                            "value": 3,
+                            "unit": "minutes",
+                            "status": "Unverified"
+                        },
+                        "topicalMethod": {
+                            "name": "Bathing",
+                            "status": "Unverified",
+                            "value": "Bathing"
+                        }
+                    },
+                    "Pigs": {
+                        "isOpen": false,
+                        "HowManyConcentrations": {
+                            "name": 1,
+                            "status": "Unverified"
+                        },
+                        "volumes": [
+                            {
+                                "value": "1",
+                                "unit": "mL",
+                                "status": "Unverified"
+                            }
+                        ],
+                        "concentrations": [
+                            {
+                                "value": "1111",
+                                "unit": "mg\/L",
+                                "status": "Unverified"
+                            }
+                        ],
+                        "absoluteDoses": [
+                            {
+                                "value": "1.111",
+                                "unit": "mg\/day",
+                                "status": "Unverified"
+                            }
+                        ],
+                        "relativeDoses": [
+                            {
+                                "value": "0.015",
+                                "unit": "mg\/kg\/day",
+                                "status": "Unverified"
+                            }
+                        ],
+                        "inhalationConcentrations": [],
+                        "wasOxyhydrogenUsed": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "isInhalationOpen": false,
+                        "isCellTissueOpen": false,
+                        "isIngestionOpen": false,
+                        "methods": [
+                            "Hydrogen-rich Saline"
+                        ],
+                        "weight": {
+                            "name": 75,
+                            "unit": "kg",
+                            "status": "Unverified"
+                        }
+                    }
+                }
+            },
+            "biomaker": null,
+            "created_at": "2025-12-17T11:47:35.000000Z",
+            "updated_at": "2025-12-17T14:04:40.000000Z",
+            "genericKeywords": false
+        }
+    ]
+}

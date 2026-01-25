@@ -1,0 +1,495 @@
+{
+    "status": true,
+    "article": {
+        "id": 677,
+        "mhid": "MHID-000676",
+        "doi": null,
+        "pmid": null,
+        "status": "Draft",
+        "publicData": {
+            "title": {
+                "name": "Hell",
+                "status": "Unverified"
+            },
+            "pmid": {
+                "name": ""
+            },
+            "doi": {
+                "name": ""
+            },
+            "issue": {
+                "name": "",
+                "status": "Unverified"
+            },
+            "abstract": {
+                "name": "",
+                "status": "Unverified"
+            },
+            "year": {
+                "name": "",
+                "status": "Unverified"
+            },
+            "authors": [],
+            "journal": {
+                "name": "",
+                "status": "Verified"
+            },
+            "journalURL": "",
+            "publisher": {
+                "name": "",
+                "status": "Verified"
+            },
+            "volume": {
+                "name": "",
+                "status": "Verified"
+            },
+            "pages": {
+                "name": "",
+                "status": "Verified"
+            },
+            "impactFactor": {
+                "name": "",
+                "status": "Verified"
+            },
+            "HIndex": {
+                "name": "",
+                "status": "Verified"
+            },
+            "sciMAGO": {
+                "name": "",
+                "status": "Verified"
+            },
+            "keywords": {
+                "name": "",
+                "status": "Unverified"
+            },
+            "country": [],
+            "grantCountry": null,
+            "researchCountry": [],
+            "pdf_url": []
+        },
+        "articleGeneralData": {
+            "HighlightArticle": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "descHighArt": {
+                "name": "",
+                "status": "Unverified"
+            },
+            "rankThisArticle": {
+                "name": null,
+                "status": "Verified"
+            },
+            "studyType": [],
+            "species": [
+                {
+                    "name": "Humans",
+                    "status": "Unverified"
+                }
+            ],
+            "organ": [],
+            "system": [],
+            "disease": [],
+            "researchtopic": [],
+            "outcome": {
+                "name": "",
+                "status": "Unverified"
+            },
+            "outcomeType": [],
+            "clinicalTrialDesign": [],
+            "observationalStudy": [],
+            "observationalStudyObj": [],
+            "inVivo": [],
+            "NonExperimentalSelect": [],
+            "Hypothesis": null,
+            "OpinionPiece": null,
+            "ReviewStudyType": null,
+            "durationOfStudy": null,
+            "durationOfStudyinVitro": null,
+            "durationOfStudyExVivo": null,
+            "studyDurationUnit": null,
+            "timingTreatmentInVivo": [],
+            "timingTreatmentInVitro": [],
+            "timingTreatmentExVivo": [],
+            "WhatKindCell": null,
+            "WhatCellTissueUsed": null,
+            "UnitOfStudyInVitro": null,
+            "UnitOfStudyExVivo": null,
+            "speciesDetails": [],
+            "selectedStudyTypes": [],
+            "diseaseModel": null,
+            "TherapeuticDeliverySystems": null,
+            "Other": null
+        },
+        "researcherData": {
+            "brandName": {
+                "name": "",
+                "status": "Verified"
+            },
+            "commercialProduct": {
+                "name": "No",
+                "status": "Verified"
+            },
+            "pharmacokinetics": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "methodOfAdmin": [
+                {
+                    "name": "Inhalation",
+                    "status": "Unverified"
+                },
+                {
+                    "name": "Inhalation of Concentrations",
+                    "status": "Unverified"
+                }
+            ],
+            "pharmacokineticsDescription": {
+                "name": null,
+                "status": "Verified"
+            },
+            "doseComparison": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "doseComparisonDesc": {
+                "name": null,
+                "status": "Verified"
+            },
+            "doseDependentEffect": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "drugComparison": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "comparisonDetail": {
+                "name": null,
+                "status": "Verified"
+            },
+            "CompMethodAdmin": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "CompMethodAdminDesc": {
+                "name": null,
+                "status": "Verified"
+            },
+            "isERW": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "erwCompared": {
+                "name": null,
+                "status": "Verified"
+            },
+            "ph": {
+                "name": null,
+                "status": "Verified"
+            },
+            "wasOxyhydrogenUsed": {
+                "name": "No",
+                "status": "Verified"
+            },
+            "safetyProfile": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "safetyofhydrogen": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "adverseEffects": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "adverseEffectsDescription": {
+                "name": null,
+                "status": "Verified"
+            },
+            "pregnantBreastfeeding": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "responderDifference": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "sexDifference": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "geneExpression": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "geneExpressionDesc": {
+                "name": null,
+                "status": "Verified"
+            },
+            "mechanisticInsights": {
+                "name": "False",
+                "status": "Verified"
+            },
+            "PasteUrl": {
+                "name": null,
+                "status": "Verified"
+            },
+            "Video_WebpageLink": {
+                "name": null,
+                "status": "Verified"
+            },
+            "inhalationConcentrations": [
+                {
+                    "percentPurity": {
+                        "name": "2.00",
+                        "status": "Unverified"
+                    },
+                    "flowRate": {
+                        "name": "3.00",
+                        "status": "Unverified"
+                    },
+                    "frequency": {
+                        "name": "6",
+                        "status": "Unverified"
+                    },
+                    "duration": {
+                        "name": "4.00",
+                        "status": "Unverified"
+                    },
+                    "unitFlowRate": {
+                        "name": "mL\/min",
+                        "status": "Unverified"
+                    },
+                    "unitDuration": {
+                        "name": "minutes",
+                        "status": "Unverified"
+                    }
+                },
+                {
+                    "percentPurity": {
+                        "name": "4.00",
+                        "status": "Unverified"
+                    },
+                    "flowRate": {
+                        "name": "8.00",
+                        "status": "Unverified"
+                    },
+                    "frequency": {
+                        "name": "16",
+                        "status": "Unverified"
+                    },
+                    "duration": {
+                        "name": "12.00",
+                        "status": "Unverified"
+                    },
+                    "unitFlowRate": {
+                        "name": "mL\/min",
+                        "status": "Unverified"
+                    },
+                    "unitDuration": {
+                        "name": "minutes",
+                        "status": "Unverified"
+                    }
+                },
+                {
+                    "percentPurity": {
+                        "name": "5.00",
+                        "status": "Unverified"
+                    },
+                    "flowRate": {
+                        "name": "10.00",
+                        "status": "Unverified"
+                    },
+                    "frequency": {
+                        "name": "20",
+                        "status": "Unverified"
+                    },
+                    "duration": {
+                        "name": "15.00",
+                        "status": "Unverified"
+                    },
+                    "unitFlowRate": {
+                        "name": "mL\/min",
+                        "status": "Unverified"
+                    },
+                    "unitDuration": {
+                        "name": "minutes",
+                        "status": "Unverified"
+                    }
+                }
+            ],
+            "numInhalationConcentrations": {
+                "name": 3,
+                "status": "Unverified"
+            },
+            "Peakbreathhydrogen": {
+                "name": null,
+                "status": "Unverified"
+            },
+            "volumes": [],
+            "concentrations": [],
+            "HowManyConcentrations": {
+                "name": 0,
+                "status": "Unverified"
+            },
+            "absoluteDoses": [],
+            "relativeDoses": [],
+            "IngestionDurationfrequency": {
+                "name": null,
+                "status": "Unverified"
+            },
+            "Frequency": {
+                "name": null,
+                "status": "Unverified"
+            },
+            "concentrationOfHydrogenForMedium": {
+                "name": null,
+                "status": "Verified"
+            },
+            "DurationFrequencyCellCultureTissues": {
+                "name": null,
+                "status": "Verified"
+            },
+            "FrequencyCellCultureTissues": "",
+            "unitDuration": "hours",
+            "topical_how": {
+                "name": null,
+                "status": "Unverified"
+            },
+            "bodyWeight": {
+                "name": null,
+                "status": "Unverified"
+            },
+            "speciesData": {
+                "Humans": {
+                    "isOpen": true,
+                    "isInhalationOpen": true,
+                    "isCellTissueOpen": false,
+                    "isIngestionOpen": false,
+                    "methods": [
+                        "Inhalation",
+                        "Inhalation of Concentrations"
+                    ],
+                    "weight": {
+                        "name": null,
+                        "unit": "kg",
+                        "status": "Unverified"
+                    },
+                    "methodsData": {
+                        "Inhalation": [
+                            {
+                                "percentPurity": {
+                                    "value": "2.00",
+                                    "status": "Unverified"
+                                },
+                                "flowRate": {
+                                    "value": "3.00",
+                                    "status": "Unverified",
+                                    "unit": "mL\/min"
+                                },
+                                "estimatedFiH2": {
+                                    "value": "6.00",
+                                    "status": "Unverified"
+                                },
+                                "frequency": {
+                                    "value": "6",
+                                    "status": "Unverified"
+                                },
+                                "duration": {
+                                    "value": "4.00",
+                                    "unit": "minutes",
+                                    "status": "Unverified"
+                                },
+                                "inhalationDuration": {
+                                    "value": "4.00",
+                                    "status": "Unverified"
+                                }
+                            }
+                        ],
+                        "Inhalation of Concentrations": [
+                            {
+                                "percentPurity": {
+                                    "value": "4.00",
+                                    "status": "Unverified"
+                                },
+                                "flowRate": {
+                                    "value": "8.00",
+                                    "status": "Unverified",
+                                    "unit": "mL\/min"
+                                },
+                                "estimatedFiH2": {
+                                    "value": "20.00",
+                                    "status": "Unverified"
+                                },
+                                "frequency": {
+                                    "value": "16",
+                                    "status": "Unverified"
+                                },
+                                "duration": {
+                                    "value": "12.00",
+                                    "unit": "minutes",
+                                    "status": "Unverified"
+                                },
+                                "inhalationDuration": {
+                                    "value": "12.00",
+                                    "status": "Unverified"
+                                }
+                            },
+                            {
+                                "percentPurity": {
+                                    "value": "5.00",
+                                    "status": "Unverified"
+                                },
+                                "flowRate": {
+                                    "value": "10.00",
+                                    "status": "Unverified",
+                                    "unit": "mL\/min"
+                                },
+                                "estimatedFiH2": {
+                                    "value": "0.01",
+                                    "status": "Unverified"
+                                },
+                                "frequency": {
+                                    "value": "20",
+                                    "status": "Unverified"
+                                },
+                                "duration": {
+                                    "value": "15.00",
+                                    "unit": "minutes",
+                                    "status": "Unverified"
+                                },
+                                "inhalationDuration": {
+                                    "value": "15.00",
+                                    "status": "Unverified"
+                                }
+                            }
+                        ]
+                    },
+                    "numInhalationConcentrations-Inhalation": {
+                        "name": "1",
+                        "status": "Unverified",
+                        "value": "1"
+                    },
+                    "numInhalationConcentrations-Inhalation of Concentrations": {
+                        "name": "2",
+                        "status": "Unverified",
+                        "value": "2"
+                    }
+                }
+            }
+        },
+        "biomaker": [],
+        "reviewer_id": null,
+        "verified_by": null,
+        "reviewer": null,
+        "addedBy": 1,
+        "is_trending": false,
+        "created_at": "2025-12-18T17:17:03.000000Z",
+        "updated_at": "2025-12-18T17:17:03.000000Z",
+        "genericKeywords": true
+    },
+    "message": "Article saved successfully"
+}

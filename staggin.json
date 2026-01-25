@@ -1,0 +1,1590 @@
+{
+    "status": true,
+    "message": "Articles fetched successfully",
+    "articles": [
+        {
+            "id": 703,
+            "mhid": "MHID-000702",
+            "doi": null,
+            "pmid": null,
+            "status": "Draft",
+            "publicData": {
+                "title": {
+                    "name": "XYZ",
+                    "status": "Unverified"
+                },
+                "pmid": {
+                    "name": ""
+                },
+                "doi": {
+                    "name": ""
+                },
+                "issue": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "abstract": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "year": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "authors": [],
+                "journal": {
+                    "name": "",
+                    "status": "Verified"
+                },
+                "journalURL": "",
+                "publisher": {
+                    "name": "",
+                    "status": "Verified"
+                },
+                "volume": {
+                    "name": "",
+                    "status": "Verified"
+                },
+                "pages": {
+                    "name": "",
+                    "status": "Verified"
+                },
+                "impactFactor": {
+                    "name": "",
+                    "status": "Verified"
+                },
+                "HIndex": {
+                    "name": "",
+                    "status": "Verified"
+                },
+                "sciMAGO": {
+                    "name": "",
+                    "status": "Verified"
+                },
+                "keywords": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "country": [],
+                "grantCountry": null,
+                "researchCountry": [],
+                "pdf_url": []
+            },
+            "articleGeneralData": {
+                "HighlightArticle": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "descHighArt": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "rankThisArticle": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "studyType": [],
+                "species": [
+                    {
+                        "name": "Humans",
+                        "status": "Unverified"
+                    }
+                ],
+                "organ": [],
+                "system": [],
+                "disease": [],
+                "researchtopic": [],
+                "outcome": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "outcomeType": [],
+                "clinicalTrialDesign": [],
+                "observationalStudy": [],
+                "observationalStudyObj": [],
+                "inVivo": [],
+                "NonExperimentalSelect": [],
+                "Hypothesis": null,
+                "OpinionPiece": null,
+                "ReviewStudyType": null,
+                "durationOfStudy": null,
+                "durationOfStudyinVitro": null,
+                "durationOfStudyExVivo": null,
+                "studyDurationUnit": null,
+                "timingTreatmentInVivo": [],
+                "timingTreatmentInVitro": [],
+                "timingTreatmentExVivo": [],
+                "WhatKindCell": {
+                    "name": null,
+                    "status": "Unverified"
+                },
+                "WhatCellTissueUsed": null,
+                "UnitOfStudyInVitro": {
+                    "name": null,
+                    "status": "Unverified"
+                },
+                "UnitOfStudyExVivo": null,
+                "speciesDetails": {
+                    "Humans": {
+                        "name": {
+                            "name": null,
+                            "status": "Unverified",
+                            "statusConcentration": "estimated"
+                        },
+                        "status": {
+                            "name": "Unverified",
+                            "status": "Unverified",
+                            "statusConcentration": "estimated"
+                        },
+                        "DescribeSpecies": {
+                            "name": null,
+                            "status": "Unverified",
+                            "statusConcentration": "estimated"
+                        },
+                        "subjects": {
+                            "name": null,
+                            "status": "Unverified",
+                            "statusConcentration": "estimated"
+                        },
+                        "health": {
+                            "name": null,
+                            "status": "Unverified",
+                            "statusConcentration": "estimated"
+                        },
+                        "gender": {
+                            "name": null,
+                            "status": "Unverified",
+                            "statusConcentration": "estimated"
+                        },
+                        "averageAge": {
+                            "name": null,
+                            "status": "Unverified",
+                            "statusConcentration": "estimated"
+                        },
+                        "averageWeight": {
+                            "name": "23.00",
+                            "status": "Unverified",
+                            "statusConcentration": "estimated",
+                            "unit": "kg"
+                        }
+                    }
+                },
+                "selectedStudyTypes": [],
+                "diseaseModel": null,
+                "TherapeuticDeliverySystems": null,
+                "Other": null
+            },
+            "researcherData": {
+                "brandName": {
+                    "name": "",
+                    "status": "Verified"
+                },
+                "commercialProduct": {
+                    "name": "No",
+                    "status": "Verified"
+                },
+                "pharmacokinetics": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "methodOfAdmin": [
+                    {
+                        "name": "Cell Culture \/ Tissues",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Cell free system",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Hydrogen-rich Saline",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Gavage",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Hydrogen Donors",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Ingestion of Dietary fibres",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Ingestion of (Si)-based hydrogen-producing antioxidant",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Inhalation",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Oral Hydrogen Water",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Subcutaneous injection of hydrogen",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Topical applications",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Ingestion of H2 producing Bacteria",
+                        "status": "Unverified"
+                    },
+                    {
+                        "name": "Inhalation of Concentrations",
+                        "status": "Unverified"
+                    }
+                ],
+                "pharmacokineticsDescription": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "doseComparison": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "doseComparisonDesc": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "doseDependentEffect": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "drugComparison": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "comparisonDetail": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "CompMethodAdmin": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "CompMethodAdminDesc": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "isERW": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "erwCompared": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "ph": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "wasOxyhydrogenUsed": {
+                    "name": "No",
+                    "status": "Verified"
+                },
+                "safetyProfile": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "safetyofhydrogen": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "adverseEffects": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "adverseEffectsDescription": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "pregnantBreastfeeding": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "responderDifference": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "sexDifference": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "geneExpression": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "geneExpressionDesc": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "mechanisticInsights": {
+                    "name": "False",
+                    "status": "Verified"
+                },
+                "PasteUrl": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "Video_WebpageLink": {
+                    "name": null,
+                    "status": "Verified"
+                },
+                "inhalationConcentrations": [
+                    {
+                        "percentPurity": {
+                            "name": "1.00",
+                            "status": "Unverified"
+                        },
+                        "flowRate": {
+                            "name": "1.00",
+                            "status": "Unverified"
+                        },
+                        "frequency": {
+                            "name": "1",
+                            "status": "Unverified"
+                        },
+                        "duration": {
+                            "name": "1.00",
+                            "status": "Unverified"
+                        },
+                        "unitFlowRate": {
+                            "name": "mL\/min",
+                            "status": "Unverified"
+                        },
+                        "unitDuration": {
+                            "name": "minutes",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "percentPurity": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "flowRate": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "frequency": {
+                            "name": "2",
+                            "status": "Unverified"
+                        },
+                        "duration": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "unitFlowRate": {
+                            "name": "mL\/min",
+                            "status": "Unverified"
+                        },
+                        "unitDuration": {
+                            "name": "minutes",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "percentPurity": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "flowRate": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "frequency": {
+                            "name": "2",
+                            "status": "Unverified"
+                        },
+                        "duration": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "unitFlowRate": {
+                            "name": "mL\/min",
+                            "status": "Unverified"
+                        },
+                        "unitDuration": {
+                            "name": "minutes",
+                            "status": "Unverified"
+                        }
+                    }
+                ],
+                "numInhalationConcentrations": {
+                    "name": 3,
+                    "status": "Unverified"
+                },
+                "Peakbreathhydrogen": {
+                    "name": null,
+                    "status": "Unverified"
+                },
+                "volumes": [
+                    {
+                        "value": {
+                            "name": "1.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "3.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "1.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "3.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "4.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "5.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "1.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "2.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "3.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "4.00",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mL",
+                            "status": "Unverified"
+                        }
+                    }
+                ],
+                "concentrations": [
+                    {
+                        "value": {
+                            "name": "1",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "2",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "3",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "1",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "2",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "3",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "4",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "5",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "1",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "2",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "3",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "4",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/L",
+                            "status": "Unverified"
+                        }
+                    }
+                ],
+                "HowManyConcentrations": {
+                    "name": 15,
+                    "status": "Unverified"
+                },
+                "absoluteDoses": [
+                    {
+                        "value": {
+                            "name": "0.0010",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0040",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0090",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0010",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0040",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0090",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0160",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0250",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0010",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0040",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0090",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0160",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/day",
+                            "status": "Unverified"
+                        }
+                    }
+                ],
+                "relativeDoses": [
+                    {
+                        "value": {
+                            "name": "0.0000",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0002",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0004",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0000",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0002",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0004",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0007",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0011",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0000",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0002",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0004",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": "0.0007",
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "value": {
+                            "name": null,
+                            "status": "Unverified"
+                        },
+                        "unit": {
+                            "name": "mg\/kg\/day",
+                            "status": "Unverified"
+                        }
+                    }
+                ],
+                "IngestionDurationfrequency": {
+                    "name": null,
+                    "status": "Unverified"
+                },
+                "Frequency": {
+                    "name": null,
+                    "status": "Unverified"
+                },
+                "concentrationOfHydrogenForMedium": {
+                    "name": "6",
+                    "status": "Verified"
+                },
+                "DurationFrequencyCellCultureTissues": {
+                    "name": "6.00",
+                    "status": "Verified"
+                },
+                "FrequencyCellCultureTissues": "",
+                "unitDuration": "hours",
+                "topical_how": {
+                    "name": null,
+                    "status": "Unverified"
+                },
+                "bodyWeight": {
+                    "name": null,
+                    "status": "Unverified"
+                },
+                "speciesData": {
+                    "Humans": {
+                        "isOpen": true,
+                        "isInhalationOpen": true,
+                        "isCellTissueOpen": true,
+                        "isIngestionOpen": true,
+                        "methods": [
+                            "Cell Culture \/ Tissues",
+                            "Cell free system",
+                            "Hydrogen-rich Saline",
+                            "Gavage",
+                            "Hydrogen Donors",
+                            "Ingestion of Dietary fibres",
+                            "Ingestion of (Si)-based hydrogen-producing antioxidant",
+                            "Inhalation",
+                            "Oral Hydrogen Water",
+                            "Subcutaneous injection of hydrogen",
+                            "Topical applications",
+                            "Ingestion of H2 producing Bacteria",
+                            "Inhalation of Concentrations"
+                        ],
+                        "weight": {
+                            "name": null,
+                            "unit": "kg",
+                            "status": "Unverified"
+                        },
+                        "methodsData": {
+                            "chamber": [
+                                {
+                                    "wasOxyhydrogenUsed": {
+                                        "value": "Yes",
+                                        "status": "Unverified"
+                                    },
+                                    "deliveryMethod": {
+                                        "value": "chamber",
+                                        "status": "Unverified"
+                                    },
+                                    "percentPurity": {
+                                        "value": "1.00",
+                                        "status": "Unverified"
+                                    },
+                                    "flowRate": {
+                                        "value": "1.00",
+                                        "status": "Unverified",
+                                        "unit": "mL\/min"
+                                    },
+                                    "estimatedFiH2": {
+                                        "value": "0.00",
+                                        "status": "Unverified"
+                                    },
+                                    "frequency": {
+                                        "value": "1",
+                                        "status": "Unverified"
+                                    },
+                                    "duration": {
+                                        "value": "1.00",
+                                        "unit": "minutes",
+                                        "status": "Unverified"
+                                    },
+                                    "inhalationDuration": {
+                                        "value": "1.00",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "wasOxyhydrogenUsed": {
+                                        "value": "Yes",
+                                        "status": "Unverified"
+                                    },
+                                    "deliveryMethod": {
+                                        "value": "chamber",
+                                        "status": "Unverified"
+                                    },
+                                    "percentPurity": {
+                                        "value": "2.00",
+                                        "status": "Unverified"
+                                    },
+                                    "flowRate": {
+                                        "value": "2.00",
+                                        "status": "Unverified",
+                                        "unit": "mL\/min"
+                                    },
+                                    "estimatedFiH2": {
+                                        "value": "0.00",
+                                        "status": "Unverified"
+                                    },
+                                    "frequency": {
+                                        "value": "2",
+                                        "status": "Unverified"
+                                    },
+                                    "duration": {
+                                        "value": "2.00",
+                                        "unit": "minutes",
+                                        "status": "Unverified"
+                                    },
+                                    "inhalationDuration": {
+                                        "value": "2.00",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "wasOxyhydrogenUsed": {
+                                        "value": "Yes",
+                                        "status": "Unverified"
+                                    },
+                                    "deliveryMethod": {
+                                        "value": "chamber",
+                                        "status": "Unverified"
+                                    },
+                                    "percentPurity": {
+                                        "value": "2.00",
+                                        "status": "Unverified"
+                                    },
+                                    "flowRate": {
+                                        "value": "2.00",
+                                        "status": "Unverified",
+                                        "unit": "mL\/min"
+                                    },
+                                    "estimatedFiH2": {
+                                        "value": "0.00",
+                                        "status": "Unverified"
+                                    },
+                                    "frequency": {
+                                        "value": "2",
+                                        "status": "Unverified"
+                                    },
+                                    "duration": {
+                                        "value": "2.00",
+                                        "unit": "minutes",
+                                        "status": "Unverified"
+                                    },
+                                    "inhalationDuration": {
+                                        "value": "2.00",
+                                        "status": "Unverified"
+                                    }
+                                }
+                            ],
+                            "Gavage": [
+                                {
+                                    "volume": {
+                                        "value": "1.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "1",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0010",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0000",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "2.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "2",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0040",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0002",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "3.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "3",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0090",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0004",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                }
+                            ],
+                            "Oral Hydrogen Water": [
+                                {
+                                    "volume": {
+                                        "value": "1.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "1",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0010",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0000",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "2.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "2",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0040",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0002",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "3.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "3",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0090",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0004",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "4.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "4",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0160",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0007",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "5.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "5",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0250",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0011",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                }
+                            ],
+                            "Hydrogen-rich Saline": [
+                                {
+                                    "volume": {
+                                        "value": "1.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "1",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0010",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0000",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "2.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "2",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0040",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0002",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "3.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "3",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0090",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0004",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                },
+                                {
+                                    "volume": {
+                                        "value": "4.00",
+                                        "unit": "mL",
+                                        "status": "Unverified"
+                                    },
+                                    "concentration": {
+                                        "value": "4",
+                                        "unit": "mg\/L",
+                                        "status": "Unverified"
+                                    },
+                                    "absoluteDose": {
+                                        "value": "0.0160",
+                                        "unit": "mg\/day",
+                                        "status": "Unverified"
+                                    },
+                                    "relativeDose": {
+                                        "value": "0.0007",
+                                        "unit": "mg\/kg\/day",
+                                        "status": "Unverified"
+                                    }
+                                }
+                            ],
+                            "Ingestion of (Si)-based hydrogen-producing antioxidant": {
+                                "peakBreathHydrogen": {
+                                    "value": "7",
+                                    "status": "Unverified"
+                                },
+                                "frequency": {
+                                    "value": "7",
+                                    "status": "Unverified"
+                                },
+                                "duration": {
+                                    "value": "7.00",
+                                    "unit": "minutes",
+                                    "status": "Unverified"
+                                }
+                            },
+                            "Ingestion of Dietary fibres": {
+                                "peakBreathHydrogen": {
+                                    "value": "8",
+                                    "status": "Unverified"
+                                },
+                                "frequency": {
+                                    "value": "8",
+                                    "status": "Unverified"
+                                },
+                                "duration": {
+                                    "value": "8.00",
+                                    "unit": "minutes",
+                                    "status": "Unverified"
+                                }
+                            },
+                            "Ingestion of H2 producing Bacteria": {
+                                "peakBreathHydrogen": {
+                                    "value": "9",
+                                    "status": "Unverified"
+                                },
+                                "frequency": {
+                                    "value": "9",
+                                    "status": "Unverified"
+                                },
+                                "duration": {
+                                    "value": "9.00",
+                                    "unit": "minutes",
+                                    "status": "Unverified"
+                                }
+                            },
+                            "Cell Culture \/ Tissues": {
+                                "concentrationOfHydrogenForMedium": {
+                                    "value": "6",
+                                    "status": "Unverified"
+                                },
+                                "volumeOfMedium": {
+                                    "value": "1",
+                                    "unit": "mL",
+                                    "status": "Unverified"
+                                },
+                                "exposureDuration": {
+                                    "value": "6.00",
+                                    "unit": "minutes",
+                                    "status": "Unverified"
+                                }
+                            },
+                            "Topical applications": {
+                                "topicalMethod": {
+                                    "value": "Soaking",
+                                    "status": "Unverified"
+                                }
+                            }
+                        },
+                        "numInhalationConcentrations-chamber": {
+                            "name": "3",
+                            "status": "Unverified",
+                            "value": "3"
+                        },
+                        "HowManyConcentrations-Gavage": {
+                            "name": 3,
+                            "status": "Unverified"
+                        },
+                        "HowManyConcentrations-Oral Hydrogen Water": {
+                            "name": 5,
+                            "status": "Unverified"
+                        },
+                        "HowManyConcentrations-Hydrogen-rich Saline": {
+                            "name": 4,
+                            "status": "Unverified"
+                        }
+                    }
+                }
+            },
+            "biomaker": [],
+            "reviewer_id": null,
+            "verified_by": null,
+            "reviewer": null,
+            "addedBy": 1,
+            "is_trending": false,
+            "created_at": "2025-12-18T18:32:14.000000Z",
+            "updated_at": "2025-12-18T18:32:14.000000Z",
+            "genericKeywords": true
+        }
+    ],
+    "current_page": 1,
+    "last_page": 1,
+    "per_page": 25,
+    "total": 1,
+    "from": 1,
+    "to": 1,
+    "filters_applied": {
+        "status": "all",
+        "trending": false,
+        "assignment": false,
+        "search": "XYZ",
+        "generic_keywords": false
+    },
+    "status_counts": {
+        "Verified": 147,
+        "Draft": 25,
+        "In Review": 2
+    }
+}

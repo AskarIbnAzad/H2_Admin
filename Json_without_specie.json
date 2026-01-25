@@ -1,0 +1,695 @@
+{
+    "publicData": {
+        "title": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "pmid": {
+            "name": "123456",
+            "status": "Unverified"
+        },
+        "doi": {
+            "name": "342332",
+            "status": "Unverified"
+        },
+        "authors": [
+            {
+                "name": "Tian G",
+                "parent_id": 4,
+                "status": "Unverified",
+                "affiliation": "article for testing specie not available"
+            },
+            {
+                "name": "Tian Ga",
+                "parent_id": 10,
+                "status": "Unverified",
+                "affiliation": "article for testing specie not available"
+            },
+            {
+                "name": "Other",
+                "parent_id": 19,
+                "status": "Unverified",
+                "affiliation": "article for testing specie not available"
+            },
+            {
+                "name": "Sun Home",
+                "parent_id": 8,
+                "status": "Unverified",
+                "affiliation": "article for testing specie not available"
+            }
+        ],
+        "abstract": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "year": {
+            "name": 2022,
+            "status": "Unverified"
+        },
+        "journal": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "publisher": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "impactFactor": {
+            "name": "23",
+            "status": "Unverified"
+        },
+        "HIndex": {
+            "name": "42",
+            "status": "Unverified"
+        },
+        "sciMAGO": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "volume": {
+            "name": "545",
+            "status": "Unverified"
+        },
+        "issue": {
+            "name": "3",
+            "status": "Unverified"
+        },
+        "pages": {
+            "name": "54",
+            "status": "Unverified"
+        },
+        "country": [
+            {
+                "name": "Russia",
+                "status": "Unverified"
+            },
+            {
+                "name": "USA",
+                "status": "Unverified"
+            }
+        ],
+        "grantCountry": {
+            "name": "Russia",
+            "status": "Unverified"
+        },
+        "researchCountry": [
+            {
+                "name": "Russia",
+                "status": "Unverified"
+            }
+        ],
+        "keywords": {
+            "name": "article for testing specie not available,article for testing specie not available,article for testing specie not available",
+            "status": "Unverified"
+        }
+    },
+    "articleGeneralData": {
+        "outcome": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "outcomeType": [
+            "Neutral",
+            "Positive"
+        ],
+        "rankThisArticle": {
+            "name": "85",
+            "status": "Unverified"
+        },
+        "HighlightArticle": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "descHighArt": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "studyType": [
+            {
+                "name": "N/A",
+                "status": "Unverified"
+            },
+            {
+                "name": "in Vivo",
+                "status": "Unverified"
+            },
+            {
+                "name": "In Vitro",
+                "status": "Unverified"
+            },
+            {
+                "name": "Ex Vivo",
+                "status": "Unverified"
+            },
+            {
+                "name": "Non-experimental",
+                "status": "Unverified"
+            },
+            {
+                "name": "Chemical/Physicochemical Study",
+                "status": "Unverified"
+            },
+            {
+                "name": "In Silico",
+                "status": "Unverified"
+            },
+            {
+                "name": "Other",
+                "status": "Unverified"
+            }
+        ],
+        "NonExperimentalSelect": [
+            {
+                "name": "Review Study Type",
+                "status": "Unverified"
+            },
+            {
+                "name": "Opinion Piece",
+                "status": "Unverified"
+            },
+            {
+                "name": "Hypothesis",
+                "status": "Unverified"
+            },
+            {
+                "name": "Therapeutic Delivery Systems",
+                "status": "Unverified"
+            }
+        ],
+        "ReviewStudyType": {
+            "name": "Systematic Review",
+            "status": "Unverified"
+        },
+        "OpinionPiece": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "Hypothesis": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "TherapeuticDeliverySystems": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "inVivo": [
+            {
+                "name": "Human Study",
+                "status": "Unverified"
+            }
+        ],
+        "selectedStudyTypes": [
+            "Clinical Trial",
+            "Observational Study"
+        ],
+        "clinicalTrialDesign": [
+            "Non-Placebo-Controlled",
+            "Crossover",
+            "Pilot / Feasibility"
+        ],
+        "observationalStudy": [
+            "Other",
+            "Survey",
+            "Case Report"
+        ],
+        "otherObservationalStudy": "article for testing specie not available",
+        "durationOfStudy": {
+            "name": "32",
+            "status": "Unverified"
+        },
+        "timingTreatmentInVivo": [
+            {
+                "name": "Post-treatment",
+                "status": "Unverified"
+            }
+        ],
+        "WhatKindCell": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "durationOfStudyinVitro": {
+            "name": "33",
+            "status": "Unverified"
+        },
+        "UnitOfStudyInVitro": "week",
+        "timingTreatmentInVitro": [
+            {
+                "name": "Pre-treatment",
+                "status": "Unverified"
+            },
+            {
+                "name": "Simultaneous",
+                "status": "Unverified"
+            }
+        ],
+        "WhatCellTissueUsed": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "durationOfStudyExVivo": {
+            "name": "55",
+            "status": "Unverified"
+        },
+        "timingTreatmentExVivo": [
+            {
+                "name": "Post-treatment",
+                "status": "Unverified"
+            }
+        ],
+        "Other": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "researchtopic": [
+            {
+                "name": "Cancer",
+                "status": "Unverified"
+            },
+            {
+                "name": "Diabetes",
+                "status": "Unverified"
+            },
+            {
+                "name": "Parkinson's",
+                "status": "Unverified"
+            },
+            {
+                "name": "Cardiovascular Diseases",
+                "status": "Unverified"
+            }
+        ],
+        "diseaseModel": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "system": [
+            {
+                "name": "Cardiovascular System",
+                "status": "Unverified"
+            },
+            {
+                "name": "Muscular System",
+                "status": "Unverified"
+            },
+            {
+                "name": "Integumentary System",
+                "status": "Unverified"
+            }
+        ],
+        "organ": [
+            {
+                "name": "Heart",
+                "status": "Unverified"
+            },
+            {
+                "name": "Bone",
+                "status": "Unverified"
+            },
+            {
+                "name": "Brain",
+                "status": "Unverified"
+            }
+        ]
+    },
+    "researcherData": {
+        "methodOfAdmin": [
+            {
+                "name": "Oral Hydrogen Water",
+                "status": "Unverified"
+            },
+            {
+                "name": "Gavage",
+                "status": "Unverified"
+            },
+            {
+                "name": "Inhalation",
+                "status": "Unverified"
+            },
+            {
+                "name": "Ingestion of H2-producing bacteria",
+                "status": "Unverified"
+            },
+            {
+                "name": "Topical applications",
+                "status": "Unverified"
+            },
+            {
+                "name": "Hydrogen-rich Saline",
+                "status": "Unverified"
+            },
+            {
+                "name": "Subcutaneous injection of hydrogen",
+                "status": "Unverified"
+            },
+            {
+                "name": "Cell Culture / Tissues",
+                "status": "Unverified"
+            },
+            {
+                "name": "Intraperitoneal injection of Hydrogen-Rich Solution",
+                "status": "Unverified"
+            }
+        ],
+        "wasOxyhydrogenUsed": {
+            "name": "Yes",
+            "status": "Unverified"
+        },
+        "numInhalationConcentrations": {
+            "name": 2,
+            "status": "Unverified"
+        },
+        "inhalationConcentrations": [
+            {
+                "percentPurity": {
+                    "name": "23",
+                    "status": "Unverified"
+                },
+                "flowRate": {
+                    "name": "432",
+                    "status": "Unverified"
+                },
+                "frequency": {
+                    "name": "34",
+                    "status": "Unverified"
+                },
+                "duration": {
+                    "name": "33",
+                    "status": "Unverified"
+                },
+                "unitFlowRate": {
+                    "name": "mL/min",
+                    "status": "Unverified"
+                },
+                "unitDuration": {
+                    "name": "minutes",
+                    "status": "Unverified"
+                }
+            },
+            {
+                "percentPurity": {
+                    "name": "324",
+                    "status": "Unverified"
+                },
+                "flowRate": {
+                    "name": "342",
+                    "status": "Unverified"
+                },
+                "frequency": {
+                    "name": "432",
+                    "status": "Unverified"
+                },
+                "duration": {
+                    "name": "324",
+                    "status": "Unverified"
+                },
+                "unitFlowRate": {
+                    "name": "mL/min",
+                    "status": "Unverified"
+                },
+                "unitDuration": {
+                    "name": "Hr",
+                    "status": "Unverified"
+                }
+            }
+        ],
+        "inhalationConcentration_0_percentPurity": {
+            "name": "23",
+            "status": "Unverified"
+        },
+        "inhalationConcentration_0_flowRate": {
+            "name": "432",
+            "status": "Unverified"
+        },
+        "inhalationConcentration_0_frequency": {
+            "name": "34",
+            "status": "Unverified"
+        },
+        "inhalationConcentration_0_duration": {
+            "name": "33",
+            "status": "Unverified"
+        },
+        "inhalationConcentration_1_percentPurity": {
+            "name": "324",
+            "status": "Unverified"
+        },
+        "inhalationConcentration_1_flowRate": {
+            "name": "342",
+            "status": "Unverified"
+        },
+        "inhalationConcentration_1_frequency": {
+            "name": "432",
+            "status": "Unverified"
+        },
+        "inhalationConcentration_1_duration": {
+            "name": "324",
+            "status": "Unverified"
+        },
+        "inhalationConcentration_1_unitDuration": {
+            "name": "Hr",
+            "status": "Unverified"
+        },
+        "HowManyConcentrations": {
+            "name": 1,
+            "status": "Unverified"
+        },
+        "volumes": [
+            {
+                "value": {
+                    "name": "342",
+                    "status": "Unverified"
+                },
+                "unit": {
+                    "name": "L",
+                    "status": "Unverified"
+                }
+            }
+        ],
+        "concentrations": [
+            {
+                "value": {
+                    "name": "324",
+                    "status": "Unverified"
+                },
+                "unit": {
+                    "name": "L",
+                    "status": "Unverified"
+                }
+            }
+        ],
+        "absoluteDoses": [
+            {
+                "value": {
+                    "name": "2342",
+                    "status": "Unverified"
+                },
+                "unit": {
+                    "name": "µg/day",
+                    "status": "Unverified"
+                }
+            }
+        ],
+        "relativeDoses": [
+            {
+                "value": {
+                    "name": "2342",
+                    "status": "Unverified"
+                },
+                "unit": {
+                    "name": "µg/kg/day",
+                    "status": "Unverified"
+                }
+            }
+        ],
+        "volume_0_value": {
+            "name": "342",
+            "status": "Unverified"
+        },
+        "concentration_0_value": {
+            "name": "324",
+            "status": "Unverified"
+        },
+        "concentration_0_unit": {
+            "name": "L",
+            "status": "Unverified"
+        },
+        "volume_0_unit": {
+            "name": "L",
+            "status": "Unverified"
+        },
+        "absoluteDoses_0_value": {
+            "name": "2342",
+            "status": "Unverified"
+        },
+        "relativeDoses_0_value": {
+            "name": "2342",
+            "status": "Unverified"
+        },
+        "bodyWeight": {
+            "name": "250",
+            "status": "Unverified"
+        },
+        "Peakbreathhydrogen": {
+            "name": "334",
+            "status": "Unverified"
+        },
+        "Frequency": {
+            "name": "324",
+            "status": "Unverified"
+        },
+        "IngestionDurationfrequency": {
+            "name": "34",
+            "status": "Unverified"
+        },
+        "concentrationOfHydrogenForMedium": {
+            "name": "2432",
+            "status": "Unverified"
+        },
+        "FrequencyCellCultureTissues": {
+            "name": "324",
+            "status": "Unverified"
+        },
+        "DurationFrequencyCellCultureTissues": {
+            "name": "234",
+            "status": "Unverified"
+        },
+        "unitDuration": "Hr",
+        "topical_how": {
+            "name": "Bathing",
+            "status": "Unverified"
+        },
+        "CompMethodAdmin": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "CompMethodAdminDesc": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "doseComparison": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "doseComparisonDesc": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "drugComparison": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "comparisonDetail": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "pharmacokinetics": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "pharmacokineticsDescription": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "isERW": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "ph": {
+            "name": "14",
+            "status": "Unverified"
+        },
+        "erwCompared": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "adverseEffects": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "adverseEffectsDescription": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "doseDependentEffect": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "safetyProfile": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "safetyofhydrogen": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "sexDifference": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "responderDifference": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "pregnantBreastfeeding": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "mechanisticInsights": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "Video_WebpageLink": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "PasteUrl": {
+            "name": "http://article for testing specie not available",
+            "status": "Unverified"
+        },
+        "commercialProduct": {
+            "name": "Yes",
+            "status": "Unverified"
+        },
+        "brandName": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        },
+        "geneExpression": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "geneExpressionDesc": {
+            "name": "article for testing specie not available",
+            "status": "Unverified"
+        }
+    },
+    "biomaker": [
+        {
+            "marker": "Other",
+            "category": [
+                "Oxidative Stress Markers",
+                "Vascular and Tissue Function",
+                "Brain/ Neuron Function",
+                "Immunity/Inflammation"
+            ],
+            "Change": [
+                "Increasing Trend",
+                "Statistically Increased"
+            ],
+            "Protein": "mRNA Levels",
+            "status": "Unverified"
+        },
+        {
+            "marker": "LDL",
+            "category": [
+                "Metabolic"
+            ],
+            "Change": [
+                "Divergent",
+                "Statistically Decreased"
+            ],
+            "Protein": "mRNA Levels",
+            "status": "Unverified"
+        }
+    ],
+    "status": "Unverified"
+}

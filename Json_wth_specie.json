@@ -1,0 +1,697 @@
+{
+    "publicData": {
+        "pdf_url": [
+            {
+                "name": "https://h2research.org/backend/public/assets/pdf/1_1741632202_articel.pdf",
+                "status": "Unverified",
+                "isPaywall": true
+            }
+        ],
+        "title": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "pmid": {
+            "name": "123456",
+            "status": "Unverified"
+        },
+        "doi": {
+            "name": "3212213",
+            "status": "Unverified"
+        },
+        "authors": [
+            {
+                "name": "Yan J",
+                "parent_id": 2,
+                "status": "Unverified",
+                "affiliation": "article for testing specie available"
+            },
+            {
+                "name": "Johnsen HM",
+                "parent_id": 3,
+                "status": "Unverified",
+                "affiliation": "article for testing specie available"
+            },
+            {
+                "name": "Tian G",
+                "parent_id": 4,
+                "status": "Unverified",
+                "affiliation": "article for testing specie available"
+            }
+        ],
+        "abstract": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "year": {
+            "name": 2025,
+            "status": "Unverified"
+        },
+        "journal": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "publisher": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "impactFactor": {
+            "name": "12",
+            "status": "Unverified"
+        },
+        "HIndex": {
+            "name": "23-23",
+            "status": "Unverified"
+        },
+        "sciMAGO": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "volume": {
+            "name": "232",
+            "status": "Unverified"
+        },
+        "issue": {
+            "name": "1",
+            "status": "Unverified"
+        },
+        "pages": {
+            "name": "190",
+            "status": "Unverified"
+        },
+        "country": [
+            {
+                "name": "Japan",
+                "status": "Unverified"
+            },
+            {
+                "name": "China",
+                "status": "Unverified"
+            }
+        ],
+        "grantCountry": {
+            "name": "Japan",
+            "status": "Unverified"
+        },
+        "researchCountry": [
+            {
+                "name": "China",
+                "status": "Unverified"
+            }
+        ],
+        "keywords": {
+            "name": "article for testing specie available , article for testing specie available ,article for testing specie available",
+            "status": "Unverified"
+        }
+    },
+    "articleGeneralData": {
+        "outcome": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "outcomeType": [
+            "Neutral",
+            "Negative"
+        ],
+        "rankThisArticle": {
+            "name": "20",
+            "status": "Unverified"
+        },
+        "HighlightArticle": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "descHighArt": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "studyType": [
+            {
+                "name": "in Vivo",
+                "status": "Unverified"
+            },
+            {
+                "name": "In Vitro",
+                "status": "Unverified"
+            },
+            {
+                "name": "Ex Vivo",
+                "status": "Unverified"
+            },
+            {
+                "name": "Non-experimental",
+                "status": "Unverified"
+            },
+            {
+                "name": "Other",
+                "status": "Unverified"
+            },
+            {
+                "name": "Chemical/Physicochemical Study",
+                "status": "Unverified"
+            },
+            {
+                "name": "In Silico",
+                "status": "Unverified"
+            }
+        ],
+        "NonExperimentalSelect": [
+            {
+                "name": "Review Study Type",
+                "status": "Unverified"
+            },
+            {
+                "name": "Opinion Piece",
+                "status": "Unverified"
+            },
+            {
+                "name": "Hypothesis",
+                "status": "Unverified"
+            },
+            {
+                "name": "Therapeutic Delivery Systems",
+                "status": "Unverified"
+            },
+            {
+                "name": "N/A",
+                "status": "Unverified"
+            }
+        ],
+        "ReviewStudyType": {
+            "name": "Clinical Studies",
+            "status": "Unverified"
+        },
+        "OpinionPiece": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "Hypothesis": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "TherapeuticDeliverySystems": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "inVivo": [
+            {
+                "name": "Human Study",
+                "status": "Unverified"
+            }
+        ],
+        "selectedStudyTypes": [
+            "Clinical Trial",
+            "Observational Study"
+        ],
+        "clinicalTrialDesign": [
+            "Non-Randomized Trial",
+            "Randomized",
+            "Double-Blinded"
+        ],
+        "observationalStudy": [
+            "Cohort",
+            "Cross-Sectional",
+            "Case-Control"
+        ],
+        "durationOfStudy": {
+            "name": "22",
+            "status": "Unverified"
+        },
+        "studyDurationUnit": "week",
+        "timingTreatmentInVivo": [
+            {
+                "name": "Pre-treatment",
+                "status": "Unverified"
+            },
+            {
+                "name": "Simultaneous",
+                "status": "Unverified"
+            }
+        ],
+        "WhatKindCell": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "durationOfStudyinVitro": {
+            "name": "33",
+            "status": "Unverified"
+        },
+        "UnitOfStudyInVitro": "month",
+        "timingTreatmentInVitro": [
+            {
+                "name": "Post-treatment",
+                "status": "Unverified"
+            }
+        ],
+        "WhatCellTissueUsed": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "UnitOfStudyExVivo": "year",
+        "durationOfStudyExVivo": {
+            "name": "44",
+            "status": "Unverified"
+        },
+        "timingTreatmentExVivo": [
+            {
+                "name": "Pre-treatment",
+                "status": "Unverified"
+            }
+        ],
+        "Other": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "species": [
+            {
+                "name": "Dogs",
+                "status": "Unverified"
+            },
+            {
+                "name": "Humans",
+                "status": "Unverified"
+            }
+        ],
+        "speciesDetails": {
+            "Dogs": {
+                "name": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "status": {
+                    "name": "Unverified",
+                    "status": "Unverified"
+                },
+                "DescribeSpecies": {
+                    "name": "article for testing specie available",
+                    "status": "Unverified"
+                },
+                "subjects": {
+                    "name": "1",
+                    "status": "Unverified"
+                },
+                "health": {
+                    "name": "Healthy",
+                    "status": "Unverified"
+                },
+                "gender": {
+                    "name": "Male",
+                    "status": "Unverified"
+                },
+                "averageAge": {
+                    "name": "32",
+                    "status": "Unverified"
+                },
+                "ageUnit": {
+                    "name": "months",
+                    "status": "Unverified"
+                },
+                "averageWeight": {
+                    "name": "131",
+                    "status": "Unverified"
+                },
+                "weightUnit": {
+                    "name": "g",
+                    "status": "Unverified"
+                }
+            },
+            "Humans": {
+                "name": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "status": {
+                    "name": "Unverified",
+                    "status": "Unverified"
+                },
+                "DescribeSpecies": {
+                    "name": "article for testing specie available",
+                    "status": "Unverified"
+                },
+                "subjects": {
+                    "name": "2",
+                    "status": "Unverified"
+                },
+                "health": {
+                    "name": "Diseased",
+                    "status": "Unverified"
+                },
+                "gender": {
+                    "name": "Female",
+                    "status": "Unverified"
+                },
+                "averageAge": {
+                    "name": "342",
+                    "status": "Unverified"
+                },
+                "ageUnit": {
+                    "name": "weeks",
+                    "status": "Unverified"
+                },
+                "averageWeight": {
+                    "name": "123",
+                    "status": "Unverified"
+                }
+            }
+        },
+        "researchtopic": [
+            {
+                "name": "Cancer",
+                "status": "Unverified"
+            },
+            {
+                "name": "Diabetes",
+                "status": "Unverified"
+            },
+            {
+                "name": "Parkinson's",
+                "status": "Unverified"
+            },
+            {
+                "name": "Infectious Diseases",
+                "status": "Unverified"
+            }
+        ],
+        "diseaseModel": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "system": [
+            {
+                "name": "Cardiovascular System",
+                "status": "Unverified"
+            },
+            {
+                "name": "Integumentary System",
+                "status": "Unverified"
+            }
+        ],
+        "organ": [
+            {
+                "name": "Heart",
+                "status": "Unverified"
+            },
+            {
+                "name": "Bone",
+                "status": "Unverified"
+            },
+            {
+                "name": "Brain",
+                "status": "Unverified"
+            }
+        ]
+    },
+    "researcherData": {
+        "speciesData": {
+            "Dogs": {
+                "isOpen": true,
+                "HowManyConcentrations": {
+                    "name": 1,
+                    "status": "Unverified"
+                },
+                "volumes": [
+                    {
+                        "value": "458",
+                        "unit": "L",
+                        "status": "Unverified"
+                    }
+                ],
+                "concentrations": [
+                    {
+                        "value": "100",
+                        "unit": "ppb",
+                        "status": "Unverified"
+                    }
+                ],
+                "absoluteDoses": [
+                    {
+                        "value": "45.80",
+                        "unit": "mg/day",
+                        "status": "Unverified"
+                    }
+                ],
+                "relativeDoses": [
+                    {
+                        "value": "610.67",
+                        "unit": "µg/kg/day",
+                        "status": "Unverified"
+                    }
+                ],
+                "inhalationConcentrations": [
+                    {
+                        "percentPurity": {
+                            "name": "55",
+                            "status": "Unverified"
+                        },
+                        "flowRate": {
+                            "name": "55",
+                            "status": "Unverified"
+                        },
+                        "frequency": {
+                            "name": "55",
+                            "status": "Unverified"
+                        },
+                        "duration": {
+                            "name": "55",
+                            "status": "Unverified"
+                        },
+                        "unitDuration": {
+                            "name": "hours",
+                            "status": "Unverified"
+                        }
+                    },
+                    {
+                        "percentPurity": {
+                            "name": "66",
+                            "status": "Unverified"
+                        },
+                        "flowRate": {
+                            "name": "63",
+                            "status": "Unverified"
+                        },
+                        "frequency": {
+                            "name": "66",
+                            "status": "Unverified"
+                        },
+                        "duration": {
+                            "name": "66",
+                            "status": "Unverified"
+                        }
+                    }
+                ],
+                "wasOxyhydrogenUsed": {
+                    "name": "Yes",
+                    "status": "Unverified"
+                },
+                "isInhalationOpen": true,
+                "isCellTissueOpen": false,
+                "isIngestionOpen": false,
+                "methods": [
+                    "Oral Hydrogen Water",
+                    "Gavage",
+                    "Inhalation",
+                    "Topical applications"
+                ],
+                "weight": "131",
+                "numInhalationConcentrations": {
+                    "name": "2",
+                    "status": "Unverified",
+                    "value": "2"
+                },
+                "topicalMethod": {
+                    "name": "Bathing",
+                    "status": "Unverified",
+                    "value": "Bathing"
+                }
+            },
+            "Humans": {
+                "isOpen": true,
+                "HowManyConcentrations": {
+                    "name": 0,
+                    "status": "Unverified"
+                },
+                "volumes": [],
+                "concentrations": [],
+                "absoluteDoses": [],
+                "relativeDoses": [],
+                "inhalationConcentrations": [],
+                "wasOxyhydrogenUsed": {
+                    "name": "",
+                    "status": "Unverified"
+                },
+                "isInhalationOpen": false,
+                "isCellTissueOpen": true,
+                "isIngestionOpen": true,
+                "methods": [
+                    "Ingestion of H2-producing bacteria",
+                    "Hydrogen-rich Saline",
+                    "Subcutaneous injection of hydrogen",
+                    "Cell Culture / Tissues",
+                    "Intraperitoneal injection of Hydrogen-Rich Solution"
+                ],
+                "weight": "123",
+                "concentrationOfHydrogenForMedium": {
+                    "name": "45",
+                    "status": "Unverified",
+                    "value": "45"
+                },
+                "FrequencyCellCultureTissues": {
+                    "value": 65,
+                    "unit": "minutes",
+                    "status": "Unverified"
+                },
+                "DurationFrequencyCellCultureTissues": {
+                    "value": 456,
+                    "unit": "Hr",
+                    "status": "Unverified"
+                },
+                "Peakbreathhydrogen": {
+                    "name": "78",
+                    "status": "Unverified",
+                    "value": "78"
+                },
+                "Frequency": {
+                    "name": "87",
+                    "status": "Unverified",
+                    "value": "87"
+                },
+                "IngestionDurationfrequency": {
+                    "value": 787,
+                    "unit": "Hr",
+                    "status": "Unverified"
+                }
+            }
+        },
+        "CompMethodAdmin": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "CompMethodAdminDesc": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "doseComparison": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "doseComparisonDesc": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "drugComparison": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "comparisonDetail": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "pharmacokinetics": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "pharmacokineticsDescription": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "isERW": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "ph": {
+            "name": "12",
+            "status": "Unverified"
+        },
+        "erwCompared": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "adverseEffects": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "adverseEffectsDescription": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "doseDependentEffect": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "safetyProfile": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "safetyofhydrogen": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "sexDifference": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "responderDifference": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "pregnantBreastfeeding": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "mechanisticInsights": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "Video_WebpageLink": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "PasteUrl": {
+            "name": "http://article for testing specie available",
+            "status": "Unverified"
+        },
+        "commercialProduct": {
+            "name": "Yes",
+            "status": "Unverified"
+        },
+        "brandName": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        },
+        "geneExpression": {
+            "name": "True",
+            "status": "Unverified"
+        },
+        "geneExpressionDesc": {
+            "name": "article for testing specie available",
+            "status": "Unverified"
+        }
+    },
+    "biomaker": [
+        {
+            "marker": "Biologicalantioxidantpotential(BAP)",
+            "category": [
+                "Antioxidant Markers"
+            ],
+            "Change": [
+                "Increasing Trend",
+                "Decreasing Trend"
+            ],
+            "Protein": "Protein Expression/Activity Level",
+            "status": "Unverified"
+        },
+        {
+            "marker": "Superoxide Dismutase(SOD)",
+            "category": [
+                "Antioxidant Markers"
+            ],
+            "Change": [
+                "Statistically Increased",
+                "Divergent"
+            ],
+            "Protein": "mRNA Levels",
+            "status": "Unverified"
+        }
+    ],
+    "status": "Unverified"
+}

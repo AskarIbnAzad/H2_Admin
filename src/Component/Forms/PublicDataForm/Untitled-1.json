@@ -1,0 +1,29 @@
+[
+    {
+        "marker": "TotalAntioxidantStatus(TAC)",
+        "category": [
+            "Antioxidant Markers"
+        ],
+        "Change": [
+            "Increasing Trend"
+        ],
+        "Protein": "Protein Expression/Activity Level",
+        "status": "Unverified"
+    },
+    {
+        "marker": "Biologicalantioxidantpotential(BAP)",
+        "category": [
+            "Antioxidant Markers"
+        ],
+        "Change": [
+            "Statistically Decreased"
+        ],
+        "Protein": "mRNA Levels",
+        "status": "Unverified"
+    }
+]
+
+
+
+
+
