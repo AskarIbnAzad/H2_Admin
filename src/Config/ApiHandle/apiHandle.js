@@ -8,7 +8,8 @@ export const exit_session = () => {
   localStorage.removeItem("auth");
 };
 // export const baseURL = `https://stagging-server786.com/mol-hyd-backend/public/api/`;
-export const baseURL = `https://api.h2research.org/api/`;
+// export const baseURL = `https://api.h2research.org/api/`; // this line used for live server
+export const baseURL = `http://127.0.0.1:8000/api/`; // This line used for local server
 
 // server  https://h2research.stagging-server786.com/
 // live  https://admin.h2research.org/

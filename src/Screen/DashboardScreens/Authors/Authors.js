@@ -51,7 +51,6 @@ const fetchAuthors = async (search = "") => {
   try {
     setLoading(true);
     const response = await apiHandle.get("get-authors");
-    console.log("API Response:", response?.data); // Debug log
     
     if (response?.data?.status && response?.data?.authors) {
       // Sort authors alphabetically by name (assuming authors have a 'name' property)
@@ -73,26 +72,24 @@ const fetchAuthors = async (search = "") => {
       }
       
       // Handle parents - it might be an object or array
-      if (response?.data?.parents) {
-        let parentsArray = [];
-        if (Array.isArray(response.data.parents)) {
+      if (response?.data?.authors) {
+        let authorsArray = [];
+        if (Array.isArray(response.data.authors)) {
           // If it's already an array, sort it too
-          parentsArray = response.data.parents.sort((a, b) => {
+          authorsArray = response.data.authors.sort((a, b) => {
             const nameA = (a.name || '').toLowerCase();
             const nameB = (b.name || '').toLowerCase();
             return nameA.localeCompare(nameB);
           });
-          console.log("Parents found as array and sorted:", parentsArray);
-        } else if (typeof response.data.parents === 'object') {
+        } else if (typeof response.data.authors === 'object') {
           // If it's an object, convert to array and sort
-          parentsArray = Object.values(response.data.parents).sort((a, b) => {
+          authorsArray = Object.values(response.data.authors).sort((a, b) => {
             const nameA = (a.name || '').toLowerCase();
             const nameB = (b.name || '').toLowerCase();
             return nameA.localeCompare(nameB);
           });
-          console.log("Parents found as object, converted to array and sorted:", parentsArray);
         }
-        setParents(parentsArray);
+        setParents(authorsArray);
       } else {
         setParents([]);
       }
