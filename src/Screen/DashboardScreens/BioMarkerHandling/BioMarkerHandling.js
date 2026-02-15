@@ -50,7 +50,7 @@ const BioMarkerHandling = () => {
             biomarker.id === id ? { ...biomarker, status: action } : biomarker
         );
         setBiomarkers(updatedBiomarkers);
-        filterData(currentTab, searchQuery);
+        filterData(currentTab, searchQuery, updatedBiomarkers);
 
         dispatch(
             approve_reject_biomarker_handling_service_auth({
@@ -71,13 +71,12 @@ const BioMarkerHandling = () => {
             const formattedData = mapApiDataToState(get_biomarker_handling_data.sub);
             setBiomarkers(formattedData);
             setLoading(false);
-            filterData(currentTab, searchQuery);
+            filterData(currentTab, searchQuery, formattedData);
         }
     }, [get_biomarker_handling_data]);
 
-    const filterData = (tab, query) => {
-        let result = biomarkers;
-
+    const filterData = (tab, query, sourceData = biomarkers) => {
+        let result = sourceData;
         // Filter out deleted items by default (only show in "Deleted" tab)
         if (tab !== "Deleted") {
             result = result.filter((item) => item.status !== "Deleted");
