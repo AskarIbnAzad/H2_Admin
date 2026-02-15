@@ -15,6 +15,7 @@ import { colorTheme } from "../../../Utils/colortheme";
 import { asyncStatus } from "../../../Utils/asyncStatus";
 import { setaddMarkerIdleStatus } from "../../../Store/slices/bio_marker_slice";
 import BackButton from "../../../Component/BackBtn/BackButton";
+import { Select, } from "antd";
 
 const BioMarkerHandling = () => {
 
@@ -30,11 +31,7 @@ const BioMarkerHandling = () => {
     const [itemsPerPage, setItemsPerPage] = useState(15);
     const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
     const [newMarker, setNewMarker] = useState(""); // New biomarker name
-    const [formData, setFormData] = useState({ categories: [] }); // Form data for the modal
-
-    useEffect(() => {
-        console.log('get_biomarker_data', get_biomarker_data)
-    }, [get_biomarker_data]);
+    const [formData, setFormData] = useState({ categories: [], parent_id: null, });
 
     // Function to map API data
     const mapApiDataToState = (apiData) => {
@@ -44,6 +41,7 @@ const BioMarkerHandling = () => {
             category: item.categories.map((cat) => cat.name),
             submittedBy: "Admin",
             status: item.status || "Pending",
+            parent_id: item.parent_id ?? null,
         }));
     };
 
@@ -117,6 +115,7 @@ const BioMarkerHandling = () => {
         // Reset the formData state
         setFormData({
             categories: [],
+            parent_id: null,
         });
         setNewMarker(""); // Reset the new biomarker name input
     }
@@ -127,9 +126,8 @@ const BioMarkerHandling = () => {
                 ? formData.categories
                 : ["Un-categorized"],
             sub: newMarker,
+            parent_id: formData.parent_id ?? null,
         };
-
-        console.log("selection", selection);
 
         // Dispatch the service
         dispatch(add_biomarker_service_auth(selection));
@@ -140,6 +138,7 @@ const BioMarkerHandling = () => {
             categories: biomarker.category,
             id: biomarker.id,
             status: biomarker.status,
+            parent_id: biomarker.parent_id ?? null,
         });
         setNewMarker(biomarker.name);
         setIsModalOpen(true);
@@ -150,6 +149,7 @@ const BioMarkerHandling = () => {
             categoryName: formData.categories,
             sub: newMarker,
             status: formData.status,
+            ...(formData.parent_id ? { parent_id: formData.parent_id } : {}),
         };
 
         dispatch(update_biomarker_service_auth({
@@ -190,6 +190,8 @@ const BioMarkerHandling = () => {
         indexOfLastItem
     );
 
+
+
     const InfoTooltip = ({ message, width }) => (
         <div className="relative group">
             <FaInfoCircle className="ml-2 cursor-pointer" color={colorTheme.primary} />
@@ -212,6 +214,27 @@ const BioMarkerHandling = () => {
             </div>
         </div>
     );
+
+    const parentOptions =
+        biomarkers
+            ?.filter(b => b.id !== formData?.id)
+            ?.map(b => ({
+                value: b.id,
+                label: b.name,
+            })) || [];
+
+    const getParentNameById = (parentId) => {
+        if (!parentId) return "-";
+        const parent = biomarkers.find((b) => b.id == parentId);
+
+        return parent?.name || "-";
+    };
+
+    const shortText = (text, len = 15) => {
+        if (!text || text === "-") return "-";
+        return text.length > len ? text.slice(0, len) + "..." : text;
+    };
+
     return (
         <div className="container mx-auto p-6">
             {/* Header */}
@@ -311,6 +334,35 @@ const BioMarkerHandling = () => {
                         }
                     />
 
+                    <div className="mt-4">
+                        <label className="block text-gray-700 font-semibold mb-2">
+                            Parent Biomarker (Optional)
+                        </label>
+
+                        {/* If you are using Ant Design Select */}
+                        <Select
+                            allowClear
+                            showSearch
+                            placeholder="Select a parent biomarker"
+                            optionFilterProp="children"
+                            value={formData.parent_id ?? undefined}
+                            onChange={(val) => setFormData({ ...formData, parent_id: val ?? null })}
+                            filterOption={(input, option) =>
+                                (option?.children ?? "").toLowerCase().includes(input.toLowerCase())
+                            }
+                            className="w-full"
+                        >
+                            {biomarkers
+                                .filter((b) => b.id !== formData?.id) // exclude itself
+                                .map((b) => (
+                                    <Select.Option key={b.id} value={b.id}>
+                                        {b.name}
+                                    </Select.Option>
+                                ))}
+                        </Select>
+
+                    </div>
+
                     {formData?.status && <div className="mt-4">
                         <label className="block text-gray-700 font-semibold mb-2">
                             Status
@@ -408,6 +460,7 @@ const BioMarkerHandling = () => {
                                 <tr>
                                     <th className="text-left py-4 px-6 font-semibold">#</th>
                                     <th className="text-left py-4 px-6 font-semibold">Biomarker Name</th>
+                                    <th className="text-left py-4 px-6 font-semibold">Parent Biomarker</th>
                                     <th className="text-left py-4 px-6 font-semibold">Category</th>
                                     <th className="text-left py-4 px-6 font-semibold">Submitted By</th>
                                     <th className="text-left py-4 px-6 font-semibold">Status</th>
@@ -429,6 +482,9 @@ const BioMarkerHandling = () => {
                                         >
                                             <td className="py-4 px-6 text-gray-700">{indexOfFirstItem + index + 1}</td>
                                             <td className="py-4 px-6 font-medium text-gray-800">{biomarker.name}</td>
+                                            <td className="py-4 px-6 text-gray-600">
+                                                {shortText(getParentNameById(biomarker.parent_id), 15)}
+                                            </td>
                                             <td className="py-4 px-6 text-gray-600">
                                                 <div className="flex flex-wrap gap-1">
                                                     {biomarker.category.map((cat, idx) => (
