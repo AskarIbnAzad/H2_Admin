@@ -32,6 +32,10 @@ const BioMarkerHandling = () => {
     const [newMarker, setNewMarker] = useState(""); // New biomarker name
     const [formData, setFormData] = useState({ categories: [] }); // Form data for the modal
 
+    useEffect(() => {
+        console.log('get_biomarker_data', get_biomarker_data)
+    }, [get_biomarker_data]);
+
     // Function to map API data
     const mapApiDataToState = (apiData) => {
         return apiData?.map((item) => ({

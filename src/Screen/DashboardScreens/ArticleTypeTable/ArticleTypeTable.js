@@ -213,6 +213,7 @@ import { apiHandle } from "../../../Config/ApiHandle/apiHandle";
 import BackButton from "../../../Component/BackBtn/BackButton";
 import ArticleAssignmentModal from "../../../Component/ArticleAssignmentModal/ArticleAssignmentModal";
 import { get_study_type_service_auth, add_study_type_service_auth } from "../../../Services/SpecieService";
+// import * as console from "node:console";
 
 const ArticleTypeTable = () => {
   const dispatch = useDispatch();
@@ -228,26 +229,38 @@ const ArticleTypeTable = () => {
   const [selectedStudyType, setSelectedStudyType] = useState(null);
   const [form] = Form.useForm();
 
-  useEffect(() => {
+
+    // useEffect(() => {
+    //     if (get_study_type_data?.studyTypes) {
+    //
+    //         const allTypes = get_study_type_data.studyTypes;
+    //
+    //         // Keep only main parent items
+    //         const parentTypes = allTypes.filter(type => type.parent_id === null);
+    //
+    //         setFilteredStudyTypes(parentTypes);
+    //     }
+    // }, [get_study_type_data]);
+
+
+    useEffect(() => {
     // Fetch study types on component mount
     setLoading(true);
     dispatch(get_study_type_service_auth()).finally(() => {
-      console.log("Study types fetched");
       setLoading(false);
     });
     //
   }, [dispatch]);
 
-  useEffect(() => {
-    // Update filtered study types whenever study types are fetched
-    console.log("Study type data updated:", get_study_type_data);
-    if (get_study_type_data?.studyTypes) {
-      setFilteredStudyTypes(get_study_type_data.studyTypes);
-    }
-  }, [get_study_type_data]);
+    useEffect(() => {
 
-  // Fetch assignment counts for all study types
+        const list = get_study_type_data?.studyTypes || [];
 
+        // keep only parents (parent_id is null)
+        const parentsOnly = list.filter((item) => item.parent_id == null);
+
+        setFilteredStudyTypes(parentsOnly);
+    }, [get_study_type_data]);
 
   // Search functionality
   const handleSearch = (value) => {
