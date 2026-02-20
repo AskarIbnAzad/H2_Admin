@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import CreatableSelect from "react-select/creatable";
 
 export const CustomCreatableSelect = ({
@@ -24,7 +24,7 @@ export const CustomCreatableSelect = ({
   customLabelMap = {},
   showNaOption = true,
 }) => {
-  const [selectOptions, setSelectOptions] = useState([]);
+  // const [selectOptions, setSelectOptions] = useState([]);
 
   // useEffect(() => {
   //   if (options?.length) {
@@ -36,26 +36,33 @@ export const CustomCreatableSelect = ({
   //     setSelectOptions([{ label: "Not Applicable (N/A)", value: "N/A" }, ...mappedOptions]);
   //   }
   // }, [options]);
-  useEffect(() => {
-    if (options?.length) {
-      const mappedOptions = options.map((option) => ({
-        label: customLabelMap[option] || option,
-        value: option,
-      }));
-
-      // Conditionally add N/A option
-      const naOption = {
-        label: customLabelMap["N/A"] || "Not Applicable (N/A)",
-        value: "N/A"
-      };
-
-      const finalOptions = showNaOption
-        ? [naOption, ...mappedOptions]
-        : mappedOptions;
-
-      setSelectOptions(finalOptions);
+  const selectOptions = useMemo(() => {
+    if (!options || !options.length) {
+      // If no options but you still want N/A
+      if (showNaOption) {
+        return [
+          {
+            label: customLabelMap["N/A"] || "Not Applicable (N/A)",
+            value: "N/A",
+          },
+        ];
+      }
+      return [];
     }
-  }, [options, customLabelMap, showNaOption]); // Add showNaOption to dependencies
+
+    const mappedOptions = options.map((option) => ({
+      label: customLabelMap[option] || option,
+      value: option,
+    }));
+
+    const naOption = {
+      label: customLabelMap["N/A"] || "Not Applicable (N/A)",
+      value: "N/A",
+    };
+
+    return showNaOption ? [naOption, ...mappedOptions] : mappedOptions;
+  }, [options, customLabelMap, showNaOption]);
+
   // useEffect(() => {
   //   if (options?.length) {
   //     const mappedOptions = options.map((option) => ({
@@ -103,20 +110,22 @@ export const CustomCreatableSelect = ({
       return;
     }
 
-    const newOption = { label: inputValue, value: inputValue };
-    setSelectOptions([...selectOptions, newOption]);
+    // Inform parent to save / add the new option (e.g., Redux / API)
+    if (handleAddSpecies) {
+      handleAddSpecies(inputValue);
+    }
 
-    // Dispatch the action to add a new species
-    handleAddSpecies(inputValue);
-
+    // Immediately set selected value in the form
     if (isMulti) {
-      onChange([...value, inputValue], name);
+      const current = Array.isArray(value) ? value : [];
+      onChange([...current, inputValue], name);
     } else {
       onChange(inputValue, name);
     }
 
     setErrorMessage("");
   };
+
 
   const isValidNewOption = (inputValue) => {
     return isCreate && inputValue && !isSimilarOptionExists(inputValue);
