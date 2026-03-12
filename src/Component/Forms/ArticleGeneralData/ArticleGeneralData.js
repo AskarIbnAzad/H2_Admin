@@ -144,7 +144,6 @@ const ArticleGeneralData = ({
 
   useEffect(() => {
 
-    console.log(formData, "formData");
 
     console.log("initialData", initialData);
     // If initialData exists, populate the form with the initial data
@@ -162,7 +161,12 @@ const ArticleGeneralData = ({
     }
   }, [initialData]);
 
-  console.log("formData", formData);
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      diseaseModel: prev.disease || [],
+    }));
+  }, []);
 
   const handleChange = (value, name) => {
     if (name === "species") {
