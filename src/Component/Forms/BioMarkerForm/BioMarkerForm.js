@@ -8,10 +8,9 @@ import { FaInfoCircle } from 'react-icons/fa';
 import { setaddMarkerIdleStatus } from '../../../Store/slices/bio_marker_slice';
 
 const BioMarkerForm = ({ onSubmit, initialData = [], onBack , isSpecialAction }) => {
-
-    console.log("initialData",initialData);
     
     const dispatch = useDispatch();
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const { get_biomarker_data, add_biomarker_status } = useSelector((state) => state.biomarker);
     const { add_article_status } = useSelector((state) => state.article);
     const [searchTerm, setSearchTerm] = useState('');
@@ -139,12 +138,17 @@ const BioMarkerForm = ({ onSubmit, initialData = [], onBack , isSpecialAction })
         setEditIndex(null);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // console.log("allSelections", allSelections);
+        if (isSubmitting || add_article_status === asyncStatus.LOADING) return;
 
-        onSubmit(allSelections);
+        try {
+            setIsSubmitting(true);
+            await onSubmit(allSelections);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleRemoveSelection = (index) => {
@@ -422,11 +426,17 @@ not measure biomarker levels using these methods.)" />
                     Back
                 </button>
                 <button
+                    type="button"
                     onClick={handleSubmit}
-                    className="text-white py-2 px-4 rounded hover:bg-green-700"
-                    style={{ backgroundColor: colorTheme.primary }}
+                    disabled={isSubmitting || add_article_status === asyncStatus.LOADING}
+                    style={{
+                        backgroundColor: colorTheme.primary,
+                        opacity: isSubmitting || add_article_status === asyncStatus.LOADING ? 0.6 : 1,
+                        cursor: isSubmitting || add_article_status === asyncStatus.LOADING ? 'not-allowed' : 'pointer',
+                    }}
+                    className="text-white py-2 px-4 rounded"
                 >
-                    {add_article_status === asyncStatus.LOADING ? "Loading..." : "Submit"}
+                    {isSubmitting || add_article_status === asyncStatus.LOADING ? "Loading..." : "Submit"}
                 </button>
             </div>
         </div>
