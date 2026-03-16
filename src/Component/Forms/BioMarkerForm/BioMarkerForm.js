@@ -37,44 +37,70 @@ const BioMarkerForm = ({ onSubmit, initialData = [], onBack , isSpecialAction })
 
     useEffect(() => {
         if (Array.isArray(initialData)) {
-            console.log("thats array");
-
             setAllSelections(initialData);
         } else {
-            console.log("thats not array");
-            
             setAllSelections([]);
         }
     }, [initialData]);
 
-    console.log("allSelections",allSelections);
-    
+
+    // useEffect(() => {
+    //     if (get_biomarker_data?.biomarkers) {
+    //         const combinedMarkers = get_biomarker_data.biomarkers.map((subItem) => ({
+    //             marker: subItem.sub_category_name,
+    //             categories: subItem.categories,
+    //         }));
+    //         setAllMarkers(combinedMarkers);
+    //     }
+    // }, [get_biomarker_data]);
 
     useEffect(() => {
+
         if (get_biomarker_data?.biomarkers) {
             const combinedMarkers = get_biomarker_data.biomarkers.map((subItem) => ({
-                marker: subItem.sub_category_name,
-                categories: subItem.categories,
+                marker: subItem.name,
+                categories: subItem.categories || [],
             }));
+
             setAllMarkers(combinedMarkers);
         }
     }, [get_biomarker_data]);
 
     const handleSearchChange = (e) => {
         const searchText = e.target.value.toLowerCase();
+
         setSearchTerm(searchText);
 
         if (searchText !== '') {
-            const filtered = allMarkers.filter(
-                (item) =>
-                    item?.marker?.toLowerCase().includes(searchText) ||
-                    item.categories?.some((cat) => cat?.toLowerCase().includes(searchText))
+            const filtered = allMarkers.filter((item) =>
+                item?.marker?.toLowerCase().includes(searchText) ||
+                item.categories?.some((cat) =>
+                    cat?.name?.toLowerCase().includes(searchText)
+                )
             );
+
             setFilteredMarkers(filtered);
         } else {
             setFilteredMarkers([]);
         }
     };
+
+    // const handleSearchChange = (e) => {
+    //     const searchText = e.target.value.toLowerCase();
+    //     setSearchTerm(searchText);
+    //
+    //     if (searchText !== '') {
+    //         const filtered = allMarkers.filter((item) =>
+    //             item?.marker?.toLowerCase().includes(searchText) ||
+    //             item.categories?.some((cat) =>
+    //                 cat?.name?.toLowerCase().includes(searchText)
+    //             )
+    //         );
+    //         setFilteredMarkers(filtered);
+    //     } else {
+    //         setFilteredMarkers([]);
+    //     }
+    // };
 
     const handleMarkerSelect = (marker, category) => {
         setSelectedMarker(marker);
@@ -162,8 +188,6 @@ const BioMarkerForm = ({ onSubmit, initialData = [], onBack , isSpecialAction })
             categoryName: formData.categories?.length ? formData.categories : ["Un-categorized"],
             sub: newMarker,
         };
-
-        console.log("selection", selection);
 
 
         // Dispatch the service (uncomment if needed)
