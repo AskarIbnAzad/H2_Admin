@@ -31,6 +31,13 @@ const BioMarkerForm = ({ onSubmit, initialData = [], onBack , isSpecialAction })
     const [errorMessage, setErrorMessage] = useState('');
     const [editIndex, setEditIndex] = useState(null);
 
+    const normalizeCategoryNames = (cats) => {
+        if (!Array.isArray(cats)) return [];
+        return cats
+            .map((c) => (typeof c === "string" ? c : c?.name))
+            .filter((v) => typeof v === "string" && v.trim() !== "");
+    };
+
     useEffect(() => {
         dispatch(get_biomarker_service_auth());
     }, [dispatch]);
@@ -44,40 +51,27 @@ const BioMarkerForm = ({ onSubmit, initialData = [], onBack , isSpecialAction })
     }, [initialData]);
 
 
-    // useEffect(() => {
-    //     if (get_biomarker_data?.biomarkers) {
-    //         const combinedMarkers = get_biomarker_data.biomarkers.map((subItem) => ({
-    //             marker: subItem.sub_category_name,
-    //             categories: subItem.categories,
-    //         }));
-    //         setAllMarkers(combinedMarkers);
-    //     }
-    // }, [get_biomarker_data]);
-
     useEffect(() => {
-
         if (get_biomarker_data?.biomarkers) {
             const combinedMarkers = get_biomarker_data.biomarkers.map((subItem) => ({
-                marker: subItem.name,
-                categories: subItem.categories || [],
+                marker: subItem?.name ?? "",
+                categories: normalizeCategoryNames(subItem?.categories),
             }));
-
             setAllMarkers(combinedMarkers);
         }
     }, [get_biomarker_data]);
 
     const handleSearchChange = (e) => {
-        const searchText = e.target.value.toLowerCase();
-
+        const searchText = String(e.target.value ?? "").toLowerCase();
         setSearchTerm(searchText);
 
-        if (searchText !== '') {
-            const filtered = allMarkers.filter((item) =>
-                item?.marker?.toLowerCase().includes(searchText) ||
-                item.categories?.some((cat) =>
-                    cat?.name?.toLowerCase().includes(searchText)
-                )
-            );
+        if (searchText !== "") {
+            const filtered = allMarkers.filter((item) => {
+                const markerName = String(item?.marker ?? "").toLowerCase();
+                const catNames = normalizeCategoryNames(item?.categories).map((c) => c.toLowerCase());
+
+                return markerName.includes(searchText) || catNames.some((c) => c.includes(searchText));
+            });
 
             setFilteredMarkers(filtered);
         } else {
@@ -104,7 +98,7 @@ const BioMarkerForm = ({ onSubmit, initialData = [], onBack , isSpecialAction })
 
     const handleMarkerSelect = (marker, category) => {
         setSelectedMarker(marker);
-        setSelectedCategory(category);
+        setSelectedCategory(normalizeCategoryNames(category));
         setSearchTerm(marker);
         setFilteredMarkers([]);
     };
@@ -195,21 +189,46 @@ const BioMarkerForm = ({ onSubmit, initialData = [], onBack , isSpecialAction })
 
     };
     
+    // useEffect(() => {
+    //     const updatedMarkers = [
+    //         ...allMarkers,
+    //         { marker: newMarker, categories: formData?.categories },
+    //     ];
+    //     if (add_biomarker_status === asyncStatus.SUCCEEDED) {
+    //         dispatch(get_biomarker_service_auth());
+    //         dispatch(setaddMarkerIdleStatus());
+    //         setAllMarkers(updatedMarkers);
+    //         setIsModalOpen(false);
+    //         resetSelections();
+    //         setSearchTerm("")
+    //         setFilteredMarkers([]);
+    //     }
+    // }, [add_biomarker_status, dispatch])
+
     useEffect(() => {
-        const updatedMarkers = [
-            ...allMarkers,
-            { marker: newMarker, categories: formData?.categories },
-        ];
         if (add_biomarker_status === asyncStatus.SUCCEEDED) {
+            const createdMarker = String(newMarker ?? "").trim();
+            const createdCats = normalizeCategoryNames(
+                formData.categories?.length ? formData.categories : ["Un-categorized"]
+            );
+
+            // add to list (optional)
+            setAllMarkers((prev) => [
+                ...prev,
+                { marker: createdMarker, categories: createdCats },
+            ]);
+
+            setSelectedMarker(createdMarker);
+            setSelectedCategory(createdCats);
+            setSearchTerm(createdMarker);
+            setFilteredMarkers([]);
+
+            setIsModalOpen(false);
+
             dispatch(get_biomarker_service_auth());
             dispatch(setaddMarkerIdleStatus());
-            setAllMarkers(updatedMarkers);
-            setIsModalOpen(false);
-            resetSelections();
-            setSearchTerm("")
-            setFilteredMarkers([]);
         }
-    }, [add_biomarker_status, dispatch])
+    }, [add_biomarker_status]);
 
     const InfoTooltip = ({ message, width, left = false }) => (
         <div className="relative group">
@@ -375,9 +394,11 @@ not measure biomarker levels using these methods.)" />
                                 <strong>Selection {index + 1}:</strong>
                             </p>
                             <p>Marker: {selection.marker}</p>
-                            <p>Category: {Array.isArray(selection.category) ? selection.category.join(', ') : selection.category}</p>
+                            <p>
+                                Category: {normalizeCategoryNames(selection.category).join(", ")}
+                            </p>
                             <p>Change: {Array.isArray(selection.Change) ? selection.Change.join(', ') : selection.Change}</p>
-                            <p>Protein Expression/Activity Level: {selection.Protein}</p>
+                            <p>Level: {selection.Protein}</p>
                             {initialData && Object.keys(initialData).length > 0 && <button
                                 onClick={() => handleEditSelection(index)}
                                 className="text-white py-1 px-2 rounded hover:bg-blue-700 mt-2 mr-2"
