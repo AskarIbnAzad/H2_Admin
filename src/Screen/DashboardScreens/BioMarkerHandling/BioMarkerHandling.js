@@ -38,7 +38,11 @@ const BioMarkerHandling = () => {
         return apiData?.map((item) => ({
             id: item.id,
             name: item.name,
-            category: item.categories.map((cat) => cat.name),
+            category: Array.isArray(item.categories)
+                ? item.categories
+                    .map((cat) => (typeof cat === "string" ? cat : cat?.name))
+                    .filter(Boolean) // remove undefined/null
+                : [],
             submittedBy: "Admin",
             status: item.status || "Pending",
             parent_id: item.parent_id ?? null,
@@ -89,13 +93,22 @@ const BioMarkerHandling = () => {
         }
 
         if (query) {
-            result = result.filter(
-                (item) =>
-                    item.name.toLowerCase().includes(query.toLowerCase()) ||
-                    item.category.some((cat) =>
-                        cat.toLowerCase().includes(query.toLowerCase())
-                    )
-            );
+            const q = String(query).toLowerCase();
+
+            result = result.filter((item) => {
+                const name = String(item?.name ?? "").toLowerCase();
+
+                const categories = Array.isArray(item?.category)
+                    ? item.category
+                        .filter((c) => typeof c === "string") // keep only strings
+                        .map((c) => c.toLowerCase())
+                    : [];
+
+                return (
+                    name.includes(q) ||
+                    categories.some((c) => c.includes(q))
+                );
+            });
         }
 
         setFilteredBiomarkers(result);
@@ -145,18 +158,18 @@ const BioMarkerHandling = () => {
 
     const handleUpdateMarker = () => {
         const selection = {
-            categoryName: formData.categories,
-            sub: newMarker,
+            categories: formData.categories?.length ? formData.categories : ["Un-categorized"],
+            name: newMarker,
             status: formData.status,
-            ...(formData.parent_id ? { parent_id: formData.parent_id } : {}),
+            parent_id: formData.parent_id ?? null,
         };
 
         dispatch(update_biomarker_service_auth({
             id: formData.id,
             data: selection
         }));
-
     };
+
     useEffect(() => {
         if (update_biomarker_status === asyncStatus.SUCCEEDED) {
             setIsModalOpen(false);
