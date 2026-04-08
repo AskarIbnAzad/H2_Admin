@@ -2644,7 +2644,7 @@ const SectionOneNew = () => {
       try {
         setLoading(true); // Start loading
         const response = await fetch(
-          `https://api.h2research.org/api/get-article/${id}`
+          `${process.env.REACT_APP_API_BASE_URL}/get-article/${id}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch article data");
