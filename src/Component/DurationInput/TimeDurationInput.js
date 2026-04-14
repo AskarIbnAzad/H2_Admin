@@ -85,7 +85,7 @@ export const TimeDurationInput = ({
 
                 {/* Check Icon */}
                 <select
-                    value={unit}
+                    value={unit?.name}
                     onChange={(e) => onUnitChange(e.target.value)}
                     className="absolute right-2 bg-transparent text-gray-600 h-full px-2 rounded-r-lg focus:outline-none"
                     style={{
@@ -99,10 +99,10 @@ export const TimeDurationInput = ({
                     }}
                 >
                     <option value="hours">Hours</option>
-                    <option value="day">Days</option>
-                    <option value="week">Weeks</option>
-                    <option value="month">Months</option>
-                    <option value="year">Years</option>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
                 </select>
                 <span
                     className="absolute right-1 pointer-events-none"
