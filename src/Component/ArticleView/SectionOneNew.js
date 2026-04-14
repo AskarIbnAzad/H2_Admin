@@ -267,11 +267,12 @@ function StudyDetails({ articleGeneralData, setIsModalFeedBackOpen }) {
           }
         }
 
+        console.log('articleGeneralData?.studyDurationUnit',articleGeneralData?.studyDurationUnit);
         if (articleGeneralData?.durationOfStudy?.name) {
           vivoDetails.push({
             label: "Duration of Study",
             value: `${articleGeneralData?.durationOfStudy?.name} ${
-              articleGeneralData?.studyDurationUnit ?? "hours"
+              articleGeneralData?.studyDurationUnit?.name ?? "hours"
             }`,
           });
         }

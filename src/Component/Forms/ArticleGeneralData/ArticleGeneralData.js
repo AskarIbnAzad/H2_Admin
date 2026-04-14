@@ -1977,7 +1977,7 @@ const ArticleGeneralData = ({
                             />
                           }
                           error={validationErrors.durationOfStudy?.name}
-                          unit={formData.studyDurationUnit}
+                          unit={formData.studyDurationUnit?.nane}
                           onUnitChange={(newUnit) =>
                             setFormData({
                               ...formData,
