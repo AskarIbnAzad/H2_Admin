@@ -736,11 +736,9 @@ const UserManager = () => {
   const getRoleId = (roleName) => {
     switch (roleName) {
       case "Admin": return 1;
-      case "Reviewer": return 2;
-      case "Researcher":
-      case "Contributor/Researcher": return 3;
-      case "User": return 4;
-      default: return 4;
+      case "User": return 2;
+      case "RESEARCHER": return 3;
+      default: return 2;
     }
   };
 
@@ -1108,10 +1106,9 @@ const UserManager = () => {
 
           <Form.Item name="role" label="Role">
             <Select>
-              <Option value="Reviewer">Reviewer</Option>
               <Option value="Admin">Admin</Option>
-              <Option value="Researcher">Researcher</Option>
               <Option value="User">User</Option>
+              <Option value="Researcher">Researcher</Option>
             </Select>
           </Form.Item>
 
