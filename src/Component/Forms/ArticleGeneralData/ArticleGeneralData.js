@@ -143,9 +143,6 @@ const ArticleGeneralData = ({
   }, []);
 
   useEffect(() => {
-
-
-    console.log("initialData", initialData);
     // If initialData exists, populate the form with the initial data
     if (initialData && Object.keys(initialData).length > 0) {
       setFormData(initialData); // Populate the form data with initial values
@@ -223,7 +220,6 @@ const ArticleGeneralData = ({
       // Handle additional state logic for other options
       // setShowHumanStudyInput(value.includes("Human Studies"));
 
-      console.log("Selected study types:", value);  
       setShowReviewStudyInput(value.includes("Review") || value.includes("review"));
       setShowInVivoInput(value.includes("In Vivo") || value.includes("in Vivo"));
       setShowExVivoInput(value.includes("Ex Vivo") || value.includes("ex Vivo"));
@@ -285,7 +281,6 @@ const ArticleGeneralData = ({
   const handleDraftSave = () => {
     setIsDraft(true); // Mark action as draft
     onDraftSubmit(formData);
-    // console.log("Draft Submitted", formData);
   };
 
   const handleSubmit = (e) => {
@@ -582,6 +577,28 @@ const ArticleGeneralData = ({
               unit: prevAvgWeight.unit || "g"
             };
           }
+        } else if (key === "averageAge") {
+          const prevAvgAge = prevSpeciesData.averageAge || {};
+
+          if (typeof value === "object" && value !== null) {
+            processedDetails[key] = {
+              ...prevAvgAge,
+              ...value,
+              name: value.name !== undefined ? value.name : (prevAvgAge.name || ""),
+              status: value.status || prevAvgAge.status || "Unverified",
+              statusConcentration: value.statusConcentration || prevAvgAge.statusConcentration || "estimated",
+              unit: value.unit || prevAvgAge.unit || "years",
+            };
+          } else {
+            processedDetails[key] = {
+              ...prevAvgAge,
+              name: String(value),
+              status: prevAvgAge.status || "Unverified",
+              statusConcentration: prevAvgAge.statusConcentration || "estimated",
+              unit: prevAvgAge.unit || "years",
+            };
+          }
+
         } else {
           // For other fields, keep existing logic
           if (value === null || value === undefined) {
@@ -634,10 +651,6 @@ const ArticleGeneralData = ({
     });
   };
 
-  console.log("formData.speciesDetails", formData.speciesDetails);
-  console.log("speciesGetting", speciesGetting);
-
-
   const handleConcentrationChange = (species, fieldName, status) => {
     setFormData((prev) => {
       const prevSpeciesDetails = prev.speciesDetails || {};
@@ -663,7 +676,6 @@ const ArticleGeneralData = ({
 
   // Update the renderSpeciesDetails function to safely access values
   const renderSpeciesDetails = (species) => {
-    console.log("Rendering details for species:", species);
     if (!species) return null;
 
     // Ensure formData.speciesDetails exists
@@ -802,7 +814,7 @@ const ArticleGeneralData = ({
           <div className="text-sm text-gray-500 mt-1 mb-2 font-extrabold">
             Note: Not required for review / non-experimental articles
           </div>
-      
+
         <ReuseableInput
           type="number"
           label="Average Age"
@@ -814,12 +826,15 @@ const ArticleGeneralData = ({
               averageAge: value,
             })
           }
-          unit={safeValue("ageUnit") || "years"}
+          unit={speciesData?.averageAge?.unit || speciesData?.ageUnit || "years"}
           onUnitChange={(newUnit) =>
-            handleAddSpeciesDetails(species, {
-              ...(speciesData || {}),
-              ageUnit: newUnit,
-            })
+              handleAddSpeciesDetails(species, {
+                ...(speciesData || {}),
+                averageAge: {
+                  ...(speciesData?.averageAge || {}),
+                  unit: newUnit,
+                },
+              })
           }
           options={["days", "weeks", "months", "years"]}
           placeholder="e.g., 2 years"
@@ -1093,7 +1108,6 @@ const ArticleGeneralData = ({
     }));
   };
 
-  // console.log("formData", formData);
 
   const highlightArticleValue =
     formData.HighlightArticle?.name === true
