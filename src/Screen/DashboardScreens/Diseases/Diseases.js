@@ -388,10 +388,10 @@ const DiseaseScreen = () => {
             ))}
           </Select>
         </Form.Item>
-          <Form.Item label="short_description" name="short_description">
+          <Form.Item label="Short Description" name="short_description">
             <Input.TextArea rows={3} placeholder="Enter short details about the disease/disorder" />
           </Form.Item>
-          <Form.Item label="description (HTML Allowed)" name="description">
+          <Form.Item label="Description (HTML Allowed)" name="description">
             <Input.TextArea rows={5} placeholder="Enter additional details about the disease/disorder" />
           </Form.Item>
         </Form>
