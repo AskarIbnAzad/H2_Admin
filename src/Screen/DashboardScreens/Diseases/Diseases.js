@@ -95,6 +95,8 @@ const DiseaseScreen = () => {
       const diseaseData = {
         name: values.name,
         parent_id: values.parent_id || null,
+        short_description: values.short_description || null,
+        description: values.description || null,
       };
 
       if (editingDisease && editingDisease.id) {
@@ -122,13 +124,14 @@ const DiseaseScreen = () => {
   };
 
   const handleAddEdit = (disease = null) => {
-    console.log(disease);
     setEditingDisease(disease);
     setIsModalVisible(true);
     if (disease) {
       form.setFieldsValue({
         name: disease.name,
         parent_id: disease.parent_id || null,
+        short_description: disease.short_description || '',
+        description: disease.description || '',
       });
     } else {
       form.resetFields();
@@ -368,7 +371,7 @@ const DiseaseScreen = () => {
         >
           <Input />
         </Form.Item>
-        <Form.Item label="Parent Disease/Disorder (Optional)" name="parent_id">
+        <Form.Item label="Parent Disease/Disorder" name="parent_id">
           <Select
             allowClear
             placeholder="Select a parent disease/disorder"
@@ -385,6 +388,12 @@ const DiseaseScreen = () => {
             ))}
           </Select>
         </Form.Item>
+          <Form.Item label="short_description" name="short_description">
+            <Input.TextArea rows={3} placeholder="Enter short details about the disease/disorder" />
+          </Form.Item>
+          <Form.Item label="description (HTML Allowed)" name="description">
+            <Input.TextArea rows={5} placeholder="Enter additional details about the disease/disorder" />
+          </Form.Item>
         </Form>
       </Modal>
 
