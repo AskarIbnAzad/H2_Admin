@@ -264,7 +264,7 @@ const OrgansTable = () => {
                         <TextArea rows={3} placeholder="Brief summary of the organ/tissue" />
                     </Form.Item>
 
-                    <Form.Item label="Full Description (HTML allowed)" name="description">
+                    <Form.Item label="Description (HTML allowed)" name="description">
                         <TextArea rows={6} placeholder="Detailed description – you can use HTML tags" />
                     </Form.Item>
                 </Form>
