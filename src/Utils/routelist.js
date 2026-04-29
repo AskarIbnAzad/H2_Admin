@@ -80,7 +80,7 @@ export const routelistScreens = [
     linkTo: "/",
     element: <Home />,
     icon: <HomeIcon />,
-    allowedRoles: [ROLE.ADMIN, ROLE.RESEARCHER, ROLE.USER],
+    allowedRoles: [ROLE.ADMIN, ROLE.RESEARCHER, ROLE.USER, ROLE.PREMIUM],
   },
   {
     screenName: "Articles",
@@ -94,7 +94,7 @@ export const routelistScreens = [
     linkTo: "/pmid",
     element: <PMID />,
     icon: <FaBookmark />,
-    allowedRoles: [ROLE.ADMIN],
+    allowedRoles: [ROLE.ADMIN, ROLE.PREMIUM],
   },
   {
     screenName: "Feedback",
@@ -126,7 +126,7 @@ export const routelistScreens = [
     linkTo: "/tutorial-manager",
     element: <TutorialManager />,
     icon: <FaUpload />,
-    allowedRoles: [ROLE.RESEARCHER, ROLE.ADMIN],
+    allowedRoles: [ROLE.RESEARCHER, ROLE.ADMIN, ROLE.PREMIUM],
   },
 
   // ======================
@@ -268,18 +268,18 @@ export const routelistScreens = [
     screenName: "MainForm",
     linkTo: "/main-form",
     element: <MainForm />,
-    allowedRoles: [ROLE.ADMIN, ROLE.RESEARCHER],
+    allowedRoles: [ROLE.ADMIN, ROLE.RESEARCHER, ROLE.PREMIUM],
   },
   {
     screenName: "ArticlePreviewPage",
     linkTo: "/article-preview/:id",
     element: <SectionOneNew />,
-    allowedRoles: [ROLE.ADMIN, ROLE.RESEARCHER],
+    allowedRoles: [ROLE.ADMIN, ROLE.RESEARCHER, ROLE.PREMIUM],
   },
   {
     screenName: "pdf-viewer",
     linkTo: "/pdf-viewer",
     element: <PdfViewer />,
-    allowedRoles: [ROLE.ADMIN, ROLE.RESEARCHER],
+    allowedRoles: [ROLE.ADMIN, ROLE.RESEARCHER, ROLE.PREMIUM],
   },
 ];

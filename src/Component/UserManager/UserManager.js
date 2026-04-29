@@ -734,10 +734,12 @@ const UserManager = () => {
 
   // Helper to get role_id from role name
   const getRoleId = (roleName) => {
+    console.log('roleName', roleName);
     switch (roleName) {
       case "Admin": return 1;
       case "User": return 2;
-      case "RESEARCHER": return 3;
+      case "Researcher": return 3;
+      case "Premium": return 4;
       default: return 2;
     }
   };
@@ -1109,6 +1111,7 @@ const UserManager = () => {
               <Option value="Admin">Admin</Option>
               <Option value="User">User</Option>
               <Option value="Researcher">Researcher</Option>
+              <Option value="Premium">Premium</Option>
             </Select>
           </Form.Item>
 

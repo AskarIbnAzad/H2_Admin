@@ -297,35 +297,35 @@ const RolesTable = () => {
             dataIndex: "name",
             key: "name",
         },
-        {
-            title: "Actions",
-            key: "actions",
-            render: (_, record) => (
-                <div style={{ display: "flex", gap: "10px" }}>
-                    <Button
-                        style={{
-                            backgroundColor: "#004c78",
-                            color: "white",
-                        }}
-                        icon={<EditOutlined />}
-                        onClick={() => handleAddEdit(record)}
-                    >
-                        Edit
-                    </Button>
-                    <Button
-                        style={{
-                            backgroundColor: "#fff1f0",
-                            color: "#cf1322",
-                            borderColor: "#ffa39e",
-                        }}
-                        icon={<DeleteOutlined />}
-                        onClick={() => handleDelete(record.id)}
-                    >
-                        Delete
-                    </Button>
-                </div>
-            ),
-        },
+        // {
+        //     title: "Actions",
+        //     key: "actions",
+        //     render: (_, record) => (
+        //         <div style={{ display: "flex", gap: "10px" }}>
+        //             <Button
+        //                 style={{
+        //                     backgroundColor: "#004c78",
+        //                     color: "white",
+        //                 }}
+        //                 icon={<EditOutlined />}
+        //                 onClick={() => handleAddEdit(record)}
+        //             >
+        //                 Edit
+        //             </Button>
+        //             <Button
+        //                 style={{
+        //                     backgroundColor: "#fff1f0",
+        //                     color: "#cf1322",
+        //                     borderColor: "#ffa39e",
+        //                 }}
+        //                 icon={<DeleteOutlined />}
+        //                 onClick={() => handleDelete(record.id)}
+        //             >
+        //                 Delete
+        //             </Button>
+        //         </div>
+        //     ),
+        // },
     ];
 
     return (
@@ -341,17 +341,17 @@ const RolesTable = () => {
                     onChange={(e) => handleSearch(e.target.value)}
                     style={{ width: "300px" }}
                 />
-                <Button
-                    style={{
-                        marginTop: "10px",
-                        backgroundColor: "#004c78",
-                        color: "white",
-                    }}
-                    icon={<PlusOutlined />}
-                    onClick={() => handleAddEdit()}
-                >
-                    Add Role
-                </Button>
+                {/*<Button*/}
+                {/*    style={{*/}
+                {/*        marginTop: "10px",*/}
+                {/*        backgroundColor: "#004c78",*/}
+                {/*        color: "white",*/}
+                {/*    }}*/}
+                {/*    icon={<PlusOutlined />}*/}
+                {/*    onClick={() => handleAddEdit()}*/}
+                {/*>*/}
+                {/*    Add Role*/}
+                {/*</Button>*/}
             </div>
             <Table
                 columns={columns}
