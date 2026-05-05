@@ -6,12 +6,24 @@ import { apiHandle } from "../../../Config/ApiHandle/apiHandle";
 import BackButton from "../../../Component/BackBtn/BackButton";
 import ArticleAssignmentModal from "../../../Component/ArticleAssignmentModal/ArticleAssignmentModal";
 import { get_organs_service_auth, add_organs_service_auth } from "../../../Services/SpecieService";
+import OrganDiseaseAssignmentModal from '../../../Component/OrganDiseaseAssignmentModal/OrganDiseaseAssignmentModal';
+import { get_disease_service_auth } from "../../../Services/DiseaseService";
 
 const { TextArea } = Input;
 
 const OrgansTable = () => {
     const dispatch = useDispatch();
     const { get_organs_data } = useSelector((state) => state.organs);
+
+    const { get_disease_data } = useSelector((state) => state.diseases);
+    const allDiseases = get_disease_data?.diseases || [];
+
+    useEffect(() => {
+        dispatch(get_disease_service_auth());
+    }, [dispatch]);
+    const [isDiseaseOrganModalVisible, setIsDiseaseOrganModalVisible] = useState(false);
+    const [selectedOrganForDisease, setSelectedOrganForDisease] = useState(null);
+
 
     const [filteredOrgans, setFilteredOrgans] = useState([]);
     const [searchValue, setSearchValue] = useState("");
@@ -171,6 +183,15 @@ const OrgansTable = () => {
                         />
                     </Button>
                     <Button
+                        style={{ marginLeft: 8 }}
+                        onClick={() => {
+                            setSelectedOrganForDisease(record);
+                            setIsDiseaseOrganModalVisible(true);
+                        }}
+                    >
+                        Manage Diseases
+                    </Button>
+                    <Button
                         style={{ backgroundColor: "#fff1f0", color: "#cf1322", borderColor: "#ffa39e" }}
                         icon={<DeleteOutlined />}
                         onClick={() => handleDelete(record.id)}
@@ -282,6 +303,17 @@ const OrgansTable = () => {
                 onAssignmentChange={() => {
                     dispatch(get_organs_service_auth());
                 }}
+            />
+            <OrganDiseaseAssignmentModal
+                visible={isDiseaseOrganModalVisible}
+                onCancel={() => {
+                    setIsDiseaseOrganModalVisible(false);
+                    setSelectedOrganForDisease(null);
+                }}
+                sourceItem={selectedOrganForDisease}
+                sourceType="organ"
+                allItems={allDiseases}
+                onAssignmentChange={() => dispatch(get_organs_service_auth())} // refresh organ data
             />
         </div>
     );

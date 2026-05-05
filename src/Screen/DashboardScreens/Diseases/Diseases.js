@@ -29,7 +29,8 @@ import {
   delete_disease_service_auth,
 } from "../../../Services/DiseaseService";
 import { apiHandle } from "../../../Config/ApiHandle/apiHandle";
-
+import OrganDiseaseAssignmentModal from '../../../Component/OrganDiseaseAssignmentModal/OrganDiseaseAssignmentModal';
+import { get_organs_service_auth } from "../../../Services/SpecieService";
 
 
 const DiseaseScreen = () => {
@@ -49,6 +50,14 @@ const DiseaseScreen = () => {
   const [isAssignModalVisible, setIsAssignModalVisible] = useState(false);
   const [selectedDisease, setSelectedDisease] = useState(null);
   const [form] = Form.useForm();
+
+  const [isOrganDiseaseModalVisible, setIsOrganDiseaseModalVisible] = useState(false);
+  const [selectedDiseaseForOrgan, setSelectedDiseaseForOrgan] = useState(null);
+
+  const { get_organs_data } = useSelector((state) => state.organs);
+  useEffect(() => { dispatch(get_organs_service_auth()); }, [dispatch]);
+  const allOrgans = get_organs_data?.organs || [];
+
 
   const sortDiseasesAlphabetically = (diseaseArray) => {
     if (!diseaseArray || !Array.isArray(diseaseArray)) return [];
@@ -204,8 +213,8 @@ const DiseaseScreen = () => {
       title: "Assigned Articles",
       key: "assignedCount",
       render: (_, record) => (
-        <Badge 
-          count={assignmentCounts[record.id] || 0} 
+        <Badge
+          count={assignmentCounts[record.id] || 0}
           style={{ backgroundColor: '#004c78' }}
         />
       ),
@@ -232,10 +241,19 @@ const DiseaseScreen = () => {
             onClick={() => handleManageArticles(record)}
           >
             Manage Articles
-            <Badge 
-              count={record?.articles_count || 0} 
+            <Badge
+              count={record?.articles_count || 0}
               style={{ backgroundColor: '#ff4d4f', marginLeft: 8 }}
             />
+          </Button>
+          <Button
+              style={{ marginLeft: 8 }}
+              onClick={() => {
+                setSelectedDiseaseForOrgan(record);
+                setIsOrganDiseaseModalVisible(true);
+              }}
+          >
+            Manage Organs
           </Button>
           <Button
             style={{
@@ -439,6 +457,18 @@ const DiseaseScreen = () => {
             dispatch(get_disease_service_auth());
           }
         }
+      />
+
+      <OrganDiseaseAssignmentModal
+          visible={isOrganDiseaseModalVisible}
+          onCancel={() => {
+            setIsOrganDiseaseModalVisible(false);
+            setSelectedDiseaseForOrgan(null);
+          }}
+          sourceItem={selectedDiseaseForOrgan}
+          sourceType="disease"
+          allItems={allOrgans}
+          onAssignmentChange={() => dispatch(get_disease_service_auth())}  // refresh disease data
       />
     </div>
   );
