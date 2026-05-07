@@ -10,6 +10,7 @@ import Logout from '@mui/icons-material/Logout';
 import { success_toast_message } from '../../Utils/toast_message';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import {AccountCircle} from "@mui/icons-material";
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -32,6 +33,10 @@ export default function AccountMenu() {
         success_toast_message("Logout Successfully");
         window.location.reload();
         localStorage.removeItem("auth");
+    };
+
+    const handleProfile = () => {
+        navigate("/profile");
     };
 
     const fetchname = user?.name?.slice(0, 1)
@@ -87,6 +92,12 @@ export default function AccountMenu() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
+                <MenuItem onClick={handleProfile}>
+                    <ListItemIcon>
+                        <AccountCircle fontSize="small" />
+                    </ListItemIcon>
+                    Profile
+                </MenuItem>
                 <MenuItem onClick={_handleLogout}>
                     <ListItemIcon>
                         <Logout fontSize="small" />

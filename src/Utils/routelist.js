@@ -46,6 +46,8 @@ import { MdAssignment, MdFeedback } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa";
 import { IoIosContacts } from "react-icons/io";
 import { ROLE } from "./roles";
+import Profile from "../Screen/DashboardScreens/Profile/Profile";
+import {AccountCircle} from "@mui/icons-material";
 
 // ==========================
 // Main routes (auth/no-auth)
@@ -158,6 +160,13 @@ export const routelistScreens = [
     linkTo: "/volunteer-contributor",
     element: <VolunteerContributorAdmin />,
     icon: <RiTeamLine size={20} />,
+    allowedRoles: [ROLE.ADMIN],
+  },
+  {
+    screenName: "Profile",
+    linkTo: "/profile",
+    element: <Profile />,
+    icon: <AccountCircle size={20} />,
     allowedRoles: [ROLE.ADMIN],
   },
 
