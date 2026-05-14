@@ -21,6 +21,12 @@ const AuthorsHandling = () => {
   const [isAssignModalVisible, setIsAssignModalVisible] = useState(false);
   const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [pageSize, setPageSize] = useState(15);
+
+  const [isFeatureModalVisible, setIsFeatureModalVisible] = useState(false);
+  const [featureAuthor, setFeatureAuthor] = useState(null);
+  const [featureProfileUrl, setFeatureProfileUrl] = useState("");
+  const [featureSubmitting, setFeatureSubmitting] = useState(false);
+
   // Feature or unfeature author
   const handleFeature = async (author, feature = true) => {
     setFeaturing(prev => ({ ...prev, [author.id]: true }));
@@ -41,6 +47,54 @@ const AuthorsHandling = () => {
     }
   };
 
+  const openFeatureModal = (author) => {
+    setFeatureAuthor(author);
+    setFeatureProfileUrl(author.profile_url || "");
+    setIsFeatureModalVisible(true);
+  };
+
+  const handleFeatureSubmit = async () => {
+    if (!featureAuthor?.id) return;
+
+    const profileUrl = featureProfileUrl.trim();
+
+    if (!profileUrl) {
+      notification.error({ message: "Please enter profile URL." });
+      return;
+    }
+
+    try {
+      setFeatureSubmitting(true);
+
+      const resp = await apiHandle.post(`authors/${featureAuthor.id}/featured/true`, {
+        profile_url: profileUrl,
+        author_id: featureAuthor.id,
+      });
+
+      if (resp?.data?.status) {
+        notification.success({
+          message: `${featureAuthor.name} is now featured!`,
+        });
+
+        setIsFeatureModalVisible(false);
+        setFeatureAuthor(null);
+        setFeatureProfileUrl("");
+
+        await fetchAuthors(searchValue);
+      } else {
+        notification.error({
+          message: resp?.data?.message || `Failed to feature ${featureAuthor.name}`,
+        });
+      }
+    } catch (error) {
+      notification.error({
+        message: `Failed to feature ${featureAuthor.name}`,
+      });
+    } finally {
+      setFeatureSubmitting(false);
+    }
+  };
+
   // Fetch authors on component mount
   useEffect(() => {
     fetchAuthors();
@@ -51,7 +105,7 @@ const fetchAuthors = async (search = "") => {
   try {
     setLoading(true);
     const response = await apiHandle.get("get-authors");
-    
+
     if (response?.data?.status && response?.data?.authors) {
       // Sort authors alphabetically by name (assuming authors have a 'name' property)
       const sortedAuthors = response.data.authors.sort((a, b) => {
@@ -70,7 +124,7 @@ const fetchAuthors = async (search = "") => {
       } else {
         setFilteredAuthors(sortedAuthors);
       }
-      
+
       // Handle parents - it might be an object or array
       if (response?.data?.authors) {
         let authorsArray = [];
@@ -133,7 +187,7 @@ const fetchAuthors = async (search = "") => {
         await apiHandle.post("add-author", authorData);
         notification.success({ message: "Author added successfully!" });
       }
-      
+
       // Refresh the authors list
       await fetchAuthors();
       setIsModalVisible(false);
@@ -153,10 +207,10 @@ const fetchAuthors = async (search = "") => {
     setIsModalVisible(true);
     if (author) {
       // Set form values for editing
-      form.setFieldsValue({ 
+      form.setFieldsValue({
         name: author.name,
-        parent_id: author.parent_id && typeof author.parent_id === 'object' 
-          ? author.parent_id.id 
+        parent_id: author.parent_id && typeof author.parent_id === 'object'
+          ? author.parent_id.id
           : author.parent_id
       });
     } else {
@@ -191,11 +245,11 @@ const fetchAuthors = async (search = "") => {
       setIsViewChildrenModalVisible(true);
       return;
     }
-    
+
     const children = filteredAuthors.filter(
       author => author.parent_id && (
-        typeof author.parent_id === 'object' 
-          ? author.parent_id.id === parent.id 
+        typeof author.parent_id === 'object'
+          ? author.parent_id.id === parent.id
           : author.parent_id === parent.id
       )
     );
@@ -206,10 +260,10 @@ const fetchAuthors = async (search = "") => {
   // Count children for each parent
   const getChildCount = (parentId) => {
     if (!Array.isArray(filteredAuthors)) return 0;
-    return filteredAuthors.filter(author => 
+    return filteredAuthors.filter(author =>
       author.parent_id && (
-        typeof author.parent_id === 'object' 
-          ? author.parent_id.id === parentId 
+        typeof author.parent_id === 'object'
+          ? author.parent_id.id === parentId
           : author.parent_id === parentId
       )
     ).length;
@@ -230,7 +284,7 @@ const fetchAuthors = async (search = "") => {
             parentAuthor = parents.find(parent => parent.id === record.parent_id);
           }
         }
-        
+
         return (
           <span>
             {text}
@@ -280,7 +334,7 @@ const fetchAuthors = async (search = "") => {
           >
             Edit
           </Button>
-         
+
            <Button
             style={{
               backgroundColor: "#1890ff",
@@ -291,8 +345,8 @@ const fetchAuthors = async (search = "") => {
             onClick={() => handleManageArticles(record)}
           >
             Manage Articles
-            <Badge 
-              count={record.articles_count || 0} 
+            <Badge
+              count={record.articles_count || 0}
               style={{ backgroundColor: '#ff4d4f', marginLeft: 8 }}
             />
           </Button>
@@ -313,20 +367,18 @@ const fetchAuthors = async (search = "") => {
               Unmark as Featured
             </Button>
           ) : (
-            <Button
-              style={{
-                backgroundColor: '#004c78',
-                color: 'white',
-                borderColor: '#004c78',
-                fontWeight: 600,
-              }}
-              icon={<StarOutlined />}
-              loading={!!featuring[record.id]}
-              onClick={() => handleFeature(record, true)}
-              disabled={!!featuring[record.id]}
-            >
-              Feature
-            </Button>
+              <Button
+                  style={{
+                    backgroundColor: "#004c78",
+                    color: "white",
+                    borderColor: "#004c78",
+                    fontWeight: 600,
+                  }}
+                  icon={<StarOutlined />}
+                  onClick={() => openFeatureModal(record)}
+              >
+                Feature
+              </Button>
           )}
 
           {getChildCount(record.id) > 0 && (
@@ -376,7 +428,7 @@ const fetchAuthors = async (search = "") => {
         <BackButton path={"/DataManager"} />
         <h1 className="text-2xl font-bold">Authors Management</h1>
       </div>
-      
+
       <div className="flex justify-between items-center mb-3">
         <Input.Search
           placeholder="Search authors"
@@ -396,14 +448,14 @@ const fetchAuthors = async (search = "") => {
           Add Author
         </Button>
       </div>
-      
+
       {/* Parent Authors Filter */}
       {/* <div className="mb-4">
         <h3 className="text-lg font-medium mb-2">Parent Authors List</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
           {parents.map(parent => (
             <Tooltip key={parent.id} title={`${getChildCount(parent.id)} child authors`}>
-              <Button 
+              <Button
                 icon={<TeamOutlined />}
                 onClick={() => handleViewChildren(parent)}
                 style={{textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis'}}
@@ -474,6 +526,40 @@ const fetchAuthors = async (search = "") => {
                 </Select.Option>
               ))}
             </Select>
+          </Form.Item>
+        </Form>
+      </Modal>
+
+      {/* Feature Author Modal */}
+      <Modal
+          title={`Feature Author${featureAuthor?.name ? `: ${featureAuthor.name}` : ""}`}
+          open={isFeatureModalVisible}
+          onOk={handleFeatureSubmit}
+          confirmLoading={featureSubmitting}
+          onCancel={() => {
+            if (featureSubmitting) return;
+            setIsFeatureModalVisible(false);
+            setFeatureAuthor(null);
+            setFeatureProfileUrl("");
+          }}
+          okText="Submit"
+          cancelText="Cancel"
+          okButtonProps={{
+            style: { backgroundColor: "#004c78", borderColor: "#004c78" },
+          }}
+      >
+        <Form layout="vertical">
+          <Form.Item
+              label="Profile URL"
+              required
+              extra="Example: https://molecularhydrogeninstitute.org/dr-john-doe/"
+          >
+            <Input
+                placeholder="Enter full profile URL"
+                value={featureProfileUrl}
+                onChange={(e) => setFeatureProfileUrl(e.target.value)}
+                disabled={featureSubmitting}
+            />
           </Form.Item>
         </Form>
       </Modal>
