@@ -281,8 +281,16 @@ const OrgansTable = () => {
                         )}
                     </Form.Item>
 
-                    <Form.Item label="Short Description" name="short_description">
-                        <TextArea rows={3} placeholder="Brief summary of the organ/tissue" />
+                    <Form.Item
+                        label="Short Description"
+                        name="short_description"
+                    >
+                        <TextArea
+                            rows={3}
+                            maxLength={120}
+                            showCount
+                            placeholder="Brief summary of the organ/tissue"
+                        />
                     </Form.Item>
 
                     <Form.Item label="Description (HTML allowed)" name="description">

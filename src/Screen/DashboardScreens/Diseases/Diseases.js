@@ -399,15 +399,25 @@ const DiseaseScreen = () => {
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
             }
           >
-            {parents.map((parent) => (
-              <Select.Option key={parent.id} value={parent.id}>
-                {parent.name}
-              </Select.Option>
-            ))}
+            {parents
+                .filter((parent) => parent.id !== editingDisease?.id)
+                .map((parent) => (
+                    <Select.Option key={parent.id} value={parent.id}>
+                      {parent.name}
+                    </Select.Option>
+                ))}
           </Select>
         </Form.Item>
-          <Form.Item label="Short Description" name="short_description">
-            <Input.TextArea rows={3} placeholder="Enter short details about the disease/disorder" />
+          <Form.Item
+              label="Short Description"
+              name="short_description"
+          >
+            <Input.TextArea
+                rows={3}
+                maxLength={120}
+                showCount
+                placeholder="Enter short details about the disease/disorder"
+            />
           </Form.Item>
           <Form.Item label="Description (HTML Allowed)" name="description">
             <Input.TextArea rows={5} placeholder="Enter additional details about the disease/disorder" />

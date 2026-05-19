@@ -54,13 +54,19 @@ export const Sidebar = () => {
         <div>
             <Box
                 component="a"
-                href="https://h2research.org"
+                href={`${process.env.REACT_APP_WEB_BASE_URL}/`}
                 target="_blank"
                 rel="noreferrer"
-                sx={{ p: 2, textAlign: "center", justifyContent: "center", margin: "auto", mt: 2 }}
+                sx={{
+                    p: 2,
+                    textAlign: "center",
+                    justifyContent: "center",
+                    margin: "auto",
+                    mt: 2,
+                }}
             >
                 <img
-                    src={"https://h2research.org/assets/logo-CZubvXOe.png"}
+                    src={`${process.env.REACT_APP_ADMIN_PANEL_BASE_URL}/logo-CZubvXOe.png`}
                     alt="Logo"
                     style={{ maxWidth: "100%", height: "auto" }}
                 />

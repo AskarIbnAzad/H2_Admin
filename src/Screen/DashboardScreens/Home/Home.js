@@ -1,63 +1,154 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Stack } from "@mui/material";
 import DashboardHome from "../../../Component/DashboardCard/DashboardCard";
-import { useDispatch, useSelector } from "react-redux";
-import { get_dashboard_data_service_auth } from "../../../Services/ArticleService";
 import { Oval } from "react-loader-spinner";
-import { asyncStatus } from "../../../Utils/asyncStatus";
 import { colorTheme } from "../../../Utils/colortheme";
+import { apiHandle } from "../../../Config/ApiHandle/apiHandle";
 import DashboardCharts from "../../../Component/DashboardCharts";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const {
-    get_dashboard_data_status,
-    get_dashboard_data_data,
-    get_dashboard_data_error,
-  } = useSelector((state) => state.article);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [homeData, setHomeData] = useState(null);
 
   useEffect(() => {
-    dispatch(get_dashboard_data_service_auth());
-  }, [dispatch]);
+    fetchHomePageData();
+  }, []);
 
-  const cardData = get_dashboard_data_data?.data;
-  const chartData = {
-    TotalArticlesOverTime: get_dashboard_data_data?.data?.years_graph,
-    Organs: get_dashboard_data_data?.data?.organs,
-    ResearchbyTopic: get_dashboard_data_data?.data?.research_topics,
-    ResearchbySpecies: get_dashboard_data_data?.data?.specie_count,
-    ArticlesbyStatus: get_dashboard_data_data?.data?.status,
-    StudyTypes: get_dashboard_data_data?.data?.study_type,
+  const fetchHomePageData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const response = await apiHandle.get(
+          `${process.env.REACT_APP_API_BASE_URL}/home-page`
+      );
+
+      if (response?.data?.data) {
+        setHomeData(response.data.data);
+      } else {
+        setHomeData(null);
+      }
+    } catch (err) {
+      setError("Error fetching data");
+      setHomeData(null);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  console.log("Dashboard Data:", get_dashboard_data_data);
+  const cardData = homeData;
 
-  if (get_dashboard_data_status === asyncStatus.LOADING) {
+  const normalizeYearData = (raw) => {
+    if (Array.isArray(raw)) {
+      return raw.map((item) => ({
+        year: item?.year,
+        count: Number(item?.count || 0),
+      }));
+    }
+
+    if (raw && typeof raw === "object") {
+      return Object.entries(raw).map(([year, count]) => ({
+        year,
+        count: Number(count || 0),
+      }));
+    }
+
+    return [];
+  };
+
+  const normalizeKeyValueData = (raw) => {
+    if (Array.isArray(raw)) {
+      return raw.reduce((acc, item) => {
+        const key = item?.name ?? item?.key ?? item?.label;
+        const value = Number(item?.value ?? item?.count ?? 0);
+
+        if (key) acc[key] = value;
+        return acc;
+      }, {});
+    }
+
+    if (raw && typeof raw === "object") {
+      return raw;
+    }
+
+    return {};
+  };
+
+  const normalizeOrganData = (raw) => {
+    if (Array.isArray(raw)) {
+      return raw.map((item) => ({
+        name: item?.name,
+        count: Number(item?.count || 0),
+      }));
+    }
+
+    if (raw && typeof raw === "object") {
+      return Object.entries(raw).map(([name, count]) => ({
+        name,
+        count: Number(count || 0),
+      }));
+    }
+
+    return [];
+  };
+
+  /**
+   * Keep the previous DashboardCharts data format.
+   * This supports both old home-page keys and admin/api keys.
+   */
+  const dashboardChartData = useMemo(() => {
+    return {
+      ArticlesByYearData: normalizeYearData(
+          homeData?.yearsGraph ?? homeData?.years_graph
+      ),
+      ResearchByTopicData: normalizeKeyValueData(
+          homeData?.researchTopics ?? homeData?.research_topics
+      ),
+      StudyByTypeData: normalizeKeyValueData(
+          homeData?.studyTypes ?? homeData?.study_type
+      ),
+      StudyBySpeciesData: normalizeKeyValueData(
+          homeData?.species ?? homeData?.specie_count
+      ),
+      StudyByOrganData: normalizeOrganData(homeData?.organs),
+    };
+  }, [homeData]);
+
+  if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-20">
-        <Oval
-          secondaryColor="lightblue"
-          color={colorTheme.primary}
-          height={50}
-          width={50}
-        />
-        <p className="mt-4 text-lg font-medium text-gray-600">
-          Loading please wait...
-        </p>
-      </div>
+        <div className="flex flex-col items-center justify-center py-20">
+          <Oval
+              secondaryColor="lightblue"
+              color={colorTheme.primary}
+              height={50}
+              width={50}
+          />
+          <p className="mt-4 text-lg font-medium text-gray-600">
+            Loading please wait...
+          </p>
+        </div>
+    );
+  }
+
+  if (error) {
+    return (
+        <div className="flex items-center justify-center py-20">
+          <p className="text-red-500 text-lg">{error}</p>
+        </div>
     );
   }
 
   return (
-    <div style={{ marginTop: "20px" }}>
-      <Stack>
-        <DashboardHome
-          data={cardData}
-          refetchData={() => dispatch(get_dashboard_data_service_auth())}
-        />
-      </Stack>
-      <DashboardCharts chartData={chartData} />
-    </div>
+      <div style={{ marginTop: "20px" }}>
+        <Stack spacing={3}>
+          <DashboardHome data={cardData} refetchData={fetchHomePageData} />
+
+          <div className="max-w-[1200px] 1366px:max-w-[1280px] 1440px:max-w-[1360px] 1920px:max-w-[1800px] mx-auto p-4">
+            <DashboardCharts data={dashboardChartData} />
+          </div>
+        </Stack>
+      </div>
   );
 };
 

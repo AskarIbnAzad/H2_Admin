@@ -1,1330 +1,553 @@
-// import React, { useState, useEffect } from "react";
-// import {
-//   Chart as ChartJS,
-//   CategoryScale,
-//   LinearScale,
-//   BarElement,
-//   LineElement,
-//   PointElement,
-//   ArcElement,
-//   Title,
-//   Tooltip,
-//   Legend,
-//   Filler,
-// } from "chart.js";
-// import { Bar, Pie, Line, Doughnut } from "react-chartjs-2";
-// import { FiChevronLeft, FiChevronRight, FiInfo } from "react-icons/fi";
-
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   BarElement,
-//   LineElement,
-//   PointElement,
-//   ArcElement,
-//   Title,
-//   Tooltip,
-//   Legend,
-//   Filler
-// );
-
-// // High-contrast professional color palette
-// const generateChartColors = (count) => {
-//   const mainColors = [
-//     "#4361ee", // Blue
-//     "#3a0ca3", // Indigo
-//     "#7209b7", // Purple
-//     "#f72585", // Pink
-//     "#4cc9f0", // Cyan
-//     "#4895ef", // Light blue
-//     "#560bad", // Violet
-//     "#b5179e", // Magenta
-//     "#480ca8", // Dark purple
-//     "#3f37c9", // Royal blue
-//     "#4361ee", // Bright blue
-//     "#4895ef", // Sky blue
-//     "#4cc9f0", // Teal
-//   ];
-  
-//   // If we need more colors than in our palette
-//   if (count > mainColors.length) {
-//     // Generate additional colors with good contrast
-//     const additionalColors = [];
-//     for (let i = 0; i < count - mainColors.length; i++) {
-//       const hue = (i * 137.5) % 360; // Golden angle for distribution
-//       additionalColors.push(`hsl(${hue}, 80%, 55%)`);
-//     }
-//     return [...mainColors, ...additionalColors];
-//   }
-  
-//   return mainColors.slice(0, count);
-// };
-
-// // Chart card component with cleaner design
-// const ChartCard = ({ title, children, info }) => (
-//   <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-//     <div className="p-5 border-b border-gray-100 flex justify-between items-center">
-//       <h2 className="text-xl font-bold text-gray-800">{title}</h2>
-//       {info && (
-//         <div className="text-gray-400 hover:text-blue-600 cursor-help transition-colors" title={info}>
-//           <FiInfo size={18} />
-//         </div>
-//       )}
-//     </div>
-//     <div className="p-5">
-//       {children}
-//     </div>
-//   </div>
-// );
-
-// // Enhanced legend component
-// const EnhancedLegend = ({ labels, backgroundColor, maxHeight }) => (
-//   <div className={`overflow-auto ${maxHeight ? `max-h-${maxHeight}` : "max-h-72"} pr-2`}>
-//     <div className="space-y-2">
-//       {labels.map((label, index) => (
-//         <div
-//           key={index}
-//           className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-//         >
-//           <div
-//             className="w-4 h-4 mr-3 rounded-md"
-//             style={{ backgroundColor: backgroundColor[index] }}
-//           />
-//           <span className="text-sm font-medium text-gray-800">
-//             {label}
-//           </span>
-//         </div>
-//       ))}
-//     </div>
-//   </div>
-// );
-
-// const DashboardCharts = ({ chartData }) => {
-//   // State for organ chart pagination
-//   const [labelStartIndex, setLabelStartIndex] = useState(0);
-//   const [visibleOrganData, setVisibleOrganData] = useState(null);
-  
-//   // Number of labels to show at once
-//   const labelsPerView = 8; // Showing fewer for better readability
-
-//   // Chart.js global defaults for professional appearance
-//   ChartJS.defaults.font.family = "'Inter', 'Helvetica', 'Arial', sans-serif";
-//   ChartJS.defaults.font.size = 12;
-//   ChartJS.defaults.color = "#64748b";
-//   ChartJS.defaults.plugins.tooltip.padding = 12;
-//   ChartJS.defaults.plugins.tooltip.cornerRadius = 8;
-//   ChartJS.defaults.plugins.tooltip.titleFont = { weight: 'bold', size: 14 };
-//   ChartJS.defaults.plugins.tooltip.bodyFont = { size: 13 };
-//   ChartJS.defaults.plugins.tooltip.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-//   ChartJS.defaults.plugins.tooltip.titleColor = '#334155';
-//   ChartJS.defaults.plugins.tooltip.bodyColor = '#334155';
-//   ChartJS.defaults.plugins.tooltip.borderColor = '#e2e8f0';
-//   ChartJS.defaults.plugins.tooltip.borderWidth = 1;
-//   ChartJS.defaults.plugins.tooltip.displayColors = true;
-//   ChartJS.defaults.plugins.tooltip.boxPadding = 6;
-//   ChartJS.defaults.plugins.tooltip.usePointStyle = true;
-
-//   // Transform TotalArticlesOverTime data for the line chart
-//   const lineChartData = {
-//     labels: chartData?.TotalArticlesOverTime?.map(item => item.year) || [],
-//     datasets: [
-//       {
-//         label: "Total Articles",
-//         data: chartData?.TotalArticlesOverTime?.map(item => item.count) || [],
-//         borderColor: "#4361ee",
-//         backgroundColor: "rgba(67, 97, 238, 0.1)",
-//         pointBackgroundColor: "#4361ee",
-//         pointBorderColor: "#ffffff",
-//         pointRadius: 5,
-//         pointHoverRadius: 7,
-//         pointBorderWidth: 2,
-//         borderWidth: 3,
-//         tension: 0.3,
-//         fill: true,
-//       },
-//     ],
-//   };
-
-//   // Transform Organs data for the bar chart
-//   const organsData = chartData?.Organs 
-//     ? Object.entries(chartData.Organs)
-//         .sort((a, b) => b[1] - a[1]) // Sort by count descending
-//         .reduce((obj, [key, value]) => {
-//           obj.labels.push(key);
-//           obj.data.push(value);
-//           return obj;
-//         }, { labels: [], data: [] })
-//     : { labels: [], data: [] };
-
-//   const organsChartData = {
-//     labels: organsData.labels,
-//     datasets: [
-//       {
-//         label: "Articles",
-//         data: organsData.data,
-//         backgroundColor: generateChartColors(organsData.labels.length),
-//         borderRadius: 8,
-//         maxBarThickness: 25,
-//       },
-//     ],
-//   };
-
-//   // Calculate total number of labels for organ chart
-//   const totalLabels = organsChartData.labels.length;
-  
-//   // Calculate max start index to prevent showing empty spaces
-//   const maxStartIndex = Math.max(0, totalLabels - labelsPerView);
-
-//   // Update visible organ data whenever the chart data or start index changes
-//   useEffect(() => {
-//     updateVisibleOrganData();
-//   }, [chartData, labelStartIndex]);
-  
-//   // Create a filtered version of the organ data with only the visible labels
-//   const updateVisibleOrganData = () => {
-//     if (!organsChartData || !organsChartData.labels || organsChartData.labels.length === 0) {
-//       setVisibleOrganData(null);
-//       return;
-//     }
-    
-//     const visibleLabels = organsChartData.labels.slice(
-//       labelStartIndex, 
-//       labelStartIndex + labelsPerView
-//     );
-    
-//     const visibleData = organsChartData.datasets.map(dataset => ({
-//       ...dataset,
-//       data: dataset.data.slice(
-//         labelStartIndex, 
-//         labelStartIndex + labelsPerView
-//       ),
-//       backgroundColor: dataset.backgroundColor.slice(
-//         labelStartIndex,
-//         labelStartIndex + labelsPerView
-//       )
-//     }));
-    
-//     setVisibleOrganData({
-//       labels: visibleLabels,
-//       datasets: visibleData
-//     });
-//   };
-  
-//   // Navigation functions for organ chart
-//   const showPreviousLabels = () => {
-//     setLabelStartIndex(Math.max(0, labelStartIndex - labelsPerView));
-//   };
-  
-//   const showNextLabels = () => {
-//     setLabelStartIndex(Math.min(maxStartIndex, labelStartIndex + labelsPerView));
-//   };
-  
-//   // Check if navigation buttons should be enabled
-//   const canGoBack = labelStartIndex > 0;
-//   const canGoForward = labelStartIndex < maxStartIndex;
-
-//   // Transform Articles by Status data for the pie chart
-//   const statusLabels = chartData?.ArticlesbyStatus ? Object.keys(chartData.ArticlesbyStatus) : [];
-//   const statusColors = {
-//     Verified: "#10b981", // Green
-//     Unverified: "#4361ee", // Blue
-//     Draft: "#f59e0b", // Amber
-//     In_review: "#6366f1", // Indigo
-//   };
-
-//   const pieChartData = {
-//     labels: statusLabels,
-//     datasets: [
-//       {
-//         label: "Article Status",
-//         data: statusLabels.map(label => chartData?.ArticlesbyStatus[label] || 0),
-//         backgroundColor: statusLabels.map(label => statusColors[label] || generateChartColors(1)[0]),
-//         borderWidth: 2,
-//         borderColor: "#ffffff",
-//       },
-//     ],
-//   };
-
-//   // Transform Research by Species data for the doughnut chart
-//   const speciesChartData = {
-//     labels: chartData?.ResearchbySpecies ? Object.keys(chartData.ResearchbySpecies) : [],
-//     datasets: [
-//       {
-//         label: "Research by Species",
-//         data: chartData?.ResearchbySpecies ? Object.values(chartData.ResearchbySpecies) : [],
-//         backgroundColor: generateChartColors(
-//           chartData?.ResearchbySpecies ? Object.keys(chartData.ResearchbySpecies).length : 0
-//         ),
-//         borderWidth: 2,
-//         borderColor: "#ffffff",
-//       },
-//     ],
-//   };
-
-//   // Transform Study Types data for the doughnut chart
-//   const studyTypeChartData = {
-//     labels: chartData?.StudyTypes ? Object.keys(chartData.StudyTypes) : [],
-//     datasets: [
-//       {
-//         label: "Study Types",
-//         data: chartData?.StudyTypes ? Object.values(chartData.StudyTypes) : [],
-//         backgroundColor: generateChartColors(
-//           chartData?.StudyTypes ? Object.keys(chartData.StudyTypes).length : 0
-//         ),
-//         borderWidth: 2,
-//         borderColor: "#ffffff",
-//       },
-//     ],
-//   };
-
-//   // Transform Research by Topic data for the bar chart - Sort by value
-//   const topicData = chartData?.ResearchbyTopic 
-//     ? Object.entries(chartData.ResearchbyTopic)
-//         .sort((a, b) => b[1] - a[1]) // Sort by count descending
-//         .slice(0, 10) // Get top 10
-//         .reduce((obj, [key, value]) => {
-//           obj.labels.push(key);
-//           obj.data.push(value);
-//           return obj;
-//         }, { labels: [], data: [] })
-//     : { labels: [], data: [] };
-
-//   const topicBarChartData = {
-//     labels: topicData.labels,
-//     datasets: [
-//       {
-//         label: "Articles",
-//         data: topicData.data,
-//         backgroundColor: generateChartColors(topicData.labels.length),
-//         borderRadius: 8,
-//         maxBarThickness: 25,
-//       },
-//     ],
-//   };
-
-//   // Shared tooltip options for consistent styling
-//   const tooltipOptions = {
-//     backgroundColor: 'rgba(255, 255, 255, 0.95)',
-//     titleColor: '#334155',
-//     bodyColor: '#334155',
-//     borderColor: '#e2e8f0',
-//     borderWidth: 1,
-//     displayColors: true,
-//     boxPadding: 6,
-//     usePointStyle: true,
-//     padding: 12,
-//     cornerRadius: 8,
-//     titleFont: { weight: 'bold', size: 14 },
-//     bodyFont: { size: 13 },
-//   };
-
-//   return (
-//     <div className="my-10">
-//       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-//         <ChartCard 
-//           title="Articles by Status" 
-//           info="Distribution of articles by verification status"
-//         >
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//             <div className="md:col-span-2 h-72">
-//               <Pie 
-//                 data={pieChartData} 
-//                 options={{ 
-//                   responsive: true,
-//                   maintainAspectRatio: false,
-//                   plugins: {
-//                     legend: {
-//                       display: false
-//                     },
-//                     tooltip: {
-//                       ...tooltipOptions,
-//                       callbacks: {
-//                         label: (context) => {
-//                           const label = context.label || "";
-//                           const value = context.raw || 0;
-//                           const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-//                           const percentage = Math.round((value / total) * 100);
-//                           return `${label}: ${value} (${percentage}%)`;
-//                         }
-//                       }
-//                     }
-//                   },
-//                   elements: {
-//                     arc: {
-//                       borderWidth: 2,
-//                     }
-//                   }
-//                 }} 
-//               />
-//             </div>
-//             <div className="flex items-center">
-//               <EnhancedLegend 
-//                 labels={pieChartData.labels} 
-//                 backgroundColor={pieChartData.datasets[0].backgroundColor} 
-//               />
-//             </div>
-//           </div>
-//         </ChartCard>
-        
-//         <ChartCard 
-//           title="Total Articles Over Time" 
-//           info="Number of articles published per year"
-//         >
-//           <div className="h-72">
-//             <Line 
-//               data={lineChartData} 
-//               options={{ 
-//                 responsive: true,
-//                 maintainAspectRatio: false,
-//                 scales: {
-//                   y: {
-//                     beginAtZero: true,
-//                     ticks: {
-//                       precision: 0
-//                     },
-//                     grid: {
-//                       color: 'rgba(226, 232, 240, 0.5)',
-//                     }
-//                   },
-//                   x: {
-//                     grid: {
-//                       display: false
-//                     }
-//                   }
-//                 },
-//                 plugins: {
-//                   legend: {
-//                     display: false
-//                   },
-//                   tooltip: {
-//                     ...tooltipOptions,
-//                     callbacks: {
-//                       title: (context) => `Year: ${context[0].label}`,
-//                       label: (context) => `Articles: ${context.raw}`
-//                     }
-//                   }
-//                 }
-//               }} 
-//             />
-//           </div>
-//         </ChartCard>
-//       </div>
-
-//       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-//         <ChartCard 
-//           title="Research by Species" 
-//           info="Distribution of research by species studied"
-//         >
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//             <div className="md:col-span-2 h-72">
-//               <Doughnut 
-//                 data={speciesChartData} 
-//                 options={{ 
-//                   responsive: true,
-//                   maintainAspectRatio: false,
-//                   cutout: '70%',
-//                   plugins: {
-//                     legend: {
-//                       display: false
-//                     },
-//                     tooltip: {
-//                       ...tooltipOptions,
-//                       callbacks: {
-//                         label: (context) => {
-//                           const label = context.label || "";
-//                           const value = context.raw || 0;
-//                           const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-//                           const percentage = ((value / total) * 100).toFixed(1);
-//                           return `${label}: ${value} (${percentage}%)`;
-//                         }
-//                       }
-//                     }
-//                   }
-//                 }} 
-//               />
-//             </div>
-//             <div className="flex items-center">
-//               <EnhancedLegend 
-//                 labels={speciesChartData.labels} 
-//                 backgroundColor={speciesChartData.datasets[0].backgroundColor}
-//               />
-//             </div>
-//           </div>
-//         </ChartCard>
-
-//         <ChartCard 
-//           title="Study Types" 
-//           info="Distribution of articles by methodology"
-//         >
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//             <div className="md:col-span-2 h-72">
-//               <Doughnut 
-//                 data={studyTypeChartData} 
-//                 options={{ 
-//                   responsive: true,
-//                   maintainAspectRatio: false,
-//                   cutout: '70%',
-//                   plugins: {
-//                     legend: {
-//                       display: false
-//                     },
-//                     tooltip: {
-//                       ...tooltipOptions,
-//                       callbacks: {
-//                         label: (context) => {
-//                           const label = context.label || "";
-//                           const value = context.raw || 0;
-//                           const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-//                           const percentage = ((value / total) * 100).toFixed(1);
-//                           return `${label}: ${value} (${percentage}%)`;
-//                         }
-//                       }
-//                     }
-//                   }
-//                 }} 
-//               />
-//             </div>
-//             <div className="flex items-center">
-//               <EnhancedLegend 
-//                 labels={studyTypeChartData.labels} 
-//                 backgroundColor={studyTypeChartData.datasets[0].backgroundColor}
-//               />
-//             </div>
-//           </div>
-//         </ChartCard>
-//       </div>
-
-//       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-//         <ChartCard 
-//           title="Top Research Topics" 
-//           info="Most common research topics (top 10)"
-//         >
-//           <div className="h-80">
-//             <Bar 
-//               data={topicBarChartData} 
-//               options={{ 
-//                 indexAxis: 'y',
-//                 responsive: true,
-//                 maintainAspectRatio: false,
-//                 plugins: {
-//                   legend: {
-//                     display: false
-//                   },
-//                   tooltip: {
-//                     ...tooltipOptions,
-//                     callbacks: {
-//                       label: (context) => `Articles: ${context.raw}`
-//                     }
-//                   }
-//                 },
-//                 scales: {
-//                   x: {
-//                     beginAtZero: true,
-//                     ticks: {
-//                       precision: 0
-//                     },
-//                     grid: {
-//                       color: 'rgba(226, 232, 240, 0.5)',
-//                     }
-//                   },
-//                   y: {
-//                     grid: {
-//                       display: false
-//                     }
-//                   }
-//                 }
-//               }} 
-//             />
-//           </div>
-//         </ChartCard>
-
-//         <ChartCard 
-//           title="Organs Researched" 
-//           info="Distribution of research by organ studied"
-//         >
-//           <div className="h-80">
-//             {visibleOrganData ? (
-//               <div className="h-72">
-//                 <Bar
-//                   data={visibleOrganData}
-//                   options={{
-//                     indexAxis: "y",
-//                     responsive: true,
-//                     maintainAspectRatio: false,
-//                     plugins: {
-//                       legend: {
-//                         display: false
-//                       },
-//                       tooltip: {
-//                         ...tooltipOptions,
-//                         callbacks: {
-//                           title: (context) => {
-//                             const tooltipIndex = context[0].dataIndex + labelStartIndex;
-//                             return organsChartData.labels[tooltipIndex];
-//                           },
-//                           label: (context) => `Articles: ${context.raw}`
-//                         }
-//                       }
-//                     },
-//                     scales: {
-//                       x: {
-//                         beginAtZero: true,
-//                         ticks: {
-//                           precision: 0
-//                         },
-//                         grid: {
-//                           color: 'rgba(226, 232, 240, 0.5)',
-//                         }
-//                       },
-//                       y: {
-//                         grid: {
-//                           display: false
-//                         }
-//                       }
-//                     }
-//                   }}
-//                 />
-
-//                 {/* Pagination controls */}
-//                 {totalLabels > labelsPerView && (
-//                   <div className="flex justify-between items-center mt-4">
-//                     <button 
-//                       className={`flex items-center px-4 py-2 rounded-lg border ${
-//                         canGoBack 
-//                           ? 'border-blue-500 text-blue-600 hover:bg-blue-50' 
-//                           : 'border-gray-200 text-gray-400 cursor-not-allowed'
-//                       } transition-colors`}
-//                       onClick={showPreviousLabels}
-//                       disabled={!canGoBack}
-//                     >
-//                       <FiChevronLeft className="h-5 w-5 mr-1" />
-//                       <span>Previous</span>
-//                     </button>
-                    
-//                     <div className="text-sm font-semibold bg-gray-100 px-4 py-2 rounded-lg">
-//                       {totalLabels > 0 ? (
-//                         `${labelStartIndex + 1}-${Math.min(labelStartIndex + labelsPerView, totalLabels)} of ${totalLabels}`
-//                       ) : (
-//                         "No data available"
-//                       )}
-//                     </div>
-                    
-//                     <button 
-//                       className={`flex items-center px-4 py-2 rounded-lg border ${
-//                         canGoForward 
-//                           ? 'border-blue-500 text-blue-600 hover:bg-blue-50' 
-//                           : 'border-gray-200 text-gray-400 cursor-not-allowed'
-//                       } transition-colors`}
-//                       onClick={showNextLabels}
-//                       disabled={!canGoForward}
-//                     >
-//                       <span>Next</span>
-//                       <FiChevronRight className="h-5 w-5 ml-1" />
-//                     </button>
-//                   </div>
-//                 )}
-//               </div>
-//             ) : (
-//               <div className="h-full flex items-center justify-center">
-//                 <div className="flex flex-col items-center">
-//                   <svg className="animate-spin h-10 w-10 text-blue-500 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-//                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-//                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-//                   </svg>
-//                   <p className="text-gray-600 font-medium">Loading organ data...</p>
-//                 </div>
-//               </div>
-//             )}
-//           </div>
-//         </ChartCard>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default DashboardCharts;
-
-
-
-import React, { useState, useEffect } from "react";
+import React, { useMemo, useState } from "react";
+import { Bar, Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
-  LineElement,
   PointElement,
-  ArcElement,
+  LineElement,
+  Filler,
   Title,
   Tooltip,
   Legend,
-  Filler,
 } from "chart.js";
-import { Bar, Pie, Line, Doughnut } from "react-chartjs-2";
-import { FiChevronLeft, FiChevronRight, FiInfo } from "react-icons/fi";
+import {
+  FiInfo,
+  FiSearch,
+  FiBook,
+  FiTrendingUp,
+  FiBarChart2,
+  FiLayers,
+  FiUsers,
+  FiGrid,
+  FiArrowRight,
+} from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    PointElement,
+    LineElement,
+    Filler,
+    Title,
+    Tooltip,
+    Legend
 );
 
-// High-contrast professional color palette
-const generateChartColors = (count) => {
-  const mainColors = [
-    "#4361ee", // Blue
-    "#3a0ca3", // Indigo
-    "#7209b7", // Purple
-    "#f72585", // Pink
-    "#4cc9f0", // Cyan
-    "#4895ef", // Light blue
-    "#560bad", // Violet
-    "#b5179e", // Magenta
-    "#480ca8", // Dark purple
-    "#3f37c9", // Royal blue
-    "#4361ee", // Bright blue
-    "#4895ef", // Sky blue
-    "#4cc9f0", // Teal
-  ];
-  
-  // If we need more colors than in our palette
-  if (count > mainColors.length) {
-    // Generate additional colors with good contrast
-    const additionalColors = [];
-    for (let i = 0; i < count - mainColors.length; i++) {
-      const hue = (i * 137.5) % 360; // Golden angle for distribution
-      additionalColors.push(`hsl(${hue}, 80%, 55%)`);
+const DashboardCharts = ({ data }) => {
+  const navigate = useNavigate();
+  const [showAllOrgans, setShowAllOrgans] = useState(false);
+
+  const primaryColor = "#004c78";
+  const primaryHoverColor = "#003556";
+
+  const generateContrastColors = (count) => {
+    if (!count) return [];
+
+    const colors = [];
+    const hueStep = 360 / count;
+    const saturation = 75;
+    const lightness = 55;
+
+    for (let i = 0; i < count; i++) {
+      colors.push(`hsl(${i * hueStep}, ${saturation}%, ${lightness}%)`);
     }
-    return [...mainColors, ...additionalColors];
-  }
-  
-  return mainColors.slice(0, count);
-};
 
-// Chart card component with cleaner design
-const ChartCard = ({ title, children, info }) => (
-  <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-    <div className="p-5 border-b border-gray-100 flex justify-between items-center">
-      <h2 className="text-xl font-bold text-gray-800">{title}</h2>
-      {info && (
-        <div className="text-gray-400 hover:text-blue-600 cursor-help transition-colors" title={info}>
-          <FiInfo size={18} />
-        </div>
-      )}
-    </div>
-    <div className="p-5">
-      {children}
-    </div>
-  </div>
-);
-
-// Enhanced legend component with formatter for labels
-const EnhancedLegend = ({ labels, backgroundColor, maxHeight }) => {
-  // Format label function to convert underscore to spaces and capitalize
-  const formatLabel = (label) => {
-    if (!label) return '';
-    // Replace underscores with spaces
-    const withSpaces = label.replace(/_/g, ' ');
-    // Capitalize each word
-    return withSpaces
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+    return colors;
   };
 
-  return (
-    <div className={`overflow-auto ${maxHeight ? `max-h-${maxHeight}` : "max-h-72"} pr-2`}>
-      <div className="space-y-2">
-        {labels.map((label, index) => (
-          <div
-            key={index}
-            className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            <div
-              className="w-4 h-4 mr-3 rounded-md"
-              style={{ backgroundColor: backgroundColor[index] }}
-            />
-            <span className="text-sm font-medium text-gray-800">
-              {formatLabel(label)}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+  const getObjectTotal = (items = []) => {
+    return items.reduce(
+        (sum, item) => sum + Number(item.value || item.count || 0),
+        0
+    );
+  };
 
-const DashboardCharts = ({ chartData }) => {
-  // State for organ chart pagination
-  const [labelStartIndex, setLabelStartIndex] = useState(0);
-  const [visibleOrganData, setVisibleOrganData] = useState(null);
-  
-  // Number of labels to show at once
-  const labelsPerView = 8; // Showing fewer for better readability
+  const sortObjectData = (rawData = {}) => {
+    return Object.entries(rawData)
+        .filter(([, value]) => Number(value) > 0)
+        .map(([name, value]) => ({
+          name,
+          value: Number(value),
+        }))
+        .sort((a, b) => b.value - a.value);
+  };
 
-  // Chart.js global defaults for professional appearance
-  ChartJS.defaults.font.family = "'Inter', 'Helvetica', 'Arial', sans-serif";
-  ChartJS.defaults.font.size = 12;
-  ChartJS.defaults.color = "#64748b";
-  ChartJS.defaults.plugins.tooltip.padding = 12;
-  ChartJS.defaults.plugins.tooltip.cornerRadius = 8;
-  ChartJS.defaults.plugins.tooltip.titleFont = { weight: 'bold', size: 14 };
-  ChartJS.defaults.plugins.tooltip.bodyFont = { size: 13 };
-  ChartJS.defaults.plugins.tooltip.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-  ChartJS.defaults.plugins.tooltip.titleColor = '#334155';
-  ChartJS.defaults.plugins.tooltip.bodyColor = '#334155';
-  ChartJS.defaults.plugins.tooltip.borderColor = '#e2e8f0';
-  ChartJS.defaults.plugins.tooltip.borderWidth = 1;
-  ChartJS.defaults.plugins.tooltip.displayColors = true;
-  ChartJS.defaults.plugins.tooltip.boxPadding = 6;
-  ChartJS.defaults.plugins.tooltip.usePointStyle = true;
+  const articlesByYear = useMemo(() => {
+    return [...(data?.ArticlesByYearData || [])]
+        .filter((item) => item?.year !== undefined && item?.year !== null)
+        .map((item) => ({
+          year: item.year,
+          count: Number(item.count || 0),
+        }))
+        .sort((a, b) => Number(a.year) - Number(b.year));
+  }, [data]);
 
-  // Transform TotalArticlesOverTime data for the line chart
+  const researchTopics = useMemo(() => {
+    return sortObjectData(data?.ResearchByTopicData || {});
+  }, [data]);
 
-  console.log("chartData", chartData);
-  const lineChartData = {
-    labels: chartData?.TotalArticlesOverTime?.map(item => item.year).slice(0, chartData?.TotalArticlesOverTime?.length) || [],
+  const topResearchTopics = useMemo(() => {
+    return researchTopics.slice(0, 10);
+  }, [researchTopics]);
+
+  const studyTypes = useMemo(() => {
+    return sortObjectData(data?.StudyByTypeData || {});
+  }, [data]);
+
+  const species = useMemo(() => {
+    return sortObjectData(data?.StudyBySpeciesData || {});
+  }, [data]);
+
+  const organs = useMemo(() => {
+    return [...(data?.StudyByOrganData || [])]
+        .filter((item) => item.name && Number(item.count) > 0)
+        .map((item) => ({
+          name: item.name,
+          count: Number(item.count),
+        }))
+        .sort((a, b) => b.count - a.count);
+  }, [data]);
+
+  const visibleOrgans = showAllOrgans ? organs : organs.slice(0, 18);
+
+  const articlesByYearData = {
+    labels: articlesByYear.map((item) => item.year),
     datasets: [
       {
-        label: "Total Articles",
-        data: chartData?.TotalArticlesOverTime?.map(item => item.count).slice(0, chartData?.TotalArticlesOverTime?.length) || [],
-        borderColor: "#4361ee",
-        backgroundColor: "rgba(67, 97, 238, 0.1)",
-        pointBackgroundColor: "#4361ee",
+        label: "Articles",
+        data: articlesByYear.map((item) => item.count),
+        borderColor: primaryColor,
+        backgroundColor: "rgba(0, 76, 120, 0.12)",
+        pointBackgroundColor: primaryColor,
         pointBorderColor: "#ffffff",
+        pointBorderWidth: 2,
         pointRadius: 5,
         pointHoverRadius: 7,
-        pointBorderWidth: 2,
-        borderWidth: 3,
-        tension: 0.3,
+        tension: 0.35,
         fill: true,
       },
     ],
   };
 
-  // Transform Organs data for the bar chart
-  const organsData = chartData?.Organs 
-    ? Object.entries(chartData.Organs)
-        .sort((a, b) => b[1] - a[1]) // Sort by count descending
-        .reduce((obj, [key, value]) => {
-          // Change "Endothelial" label to "Endothelium"
-          const label = key === "Endothelial" ? "Endothelium" : key;
-          obj.labels.push(label);
-          obj.data.push(value);
-          return obj;
-        }, { labels: [], data: [] })
-    : { labels: [], data: [] };
-
-
-
-  const organsChartData = {
-    labels: organsData.labels,
+  const researchTopicChartData = {
+    labels: topResearchTopics.map((item) => item.name),
     datasets: [
       {
         label: "Articles",
-        data: organsData.data,
-        backgroundColor: generateChartColors(organsData.labels.length),
+        data: topResearchTopics.map((item) => item.value),
+        backgroundColor: generateContrastColors(topResearchTopics.length),
+        hoverBackgroundColor: primaryHoverColor,
         borderRadius: 8,
-        maxBarThickness: 25,
+        borderWidth: 0,
+        barPercentage: 0.75,
+        categoryPercentage: 0.8,
       },
     ],
   };
 
+  const totalStudyTypes = getObjectTotal(studyTypes);
+  const totalSpecies = getObjectTotal(species);
+  const maxSpeciesValue = Math.max(...species.map((item) => item.value), 1);
+  const maxOrganValue = Math.max(...organs.map((item) => item.count), 1);
 
-  // Calculate total number of labels for organ chart
-  const totalLabels = organsChartData.labels.length;
-  
-  // Calculate max start index to prevent showing empty spaces
-  const maxStartIndex = Math.max(0, totalLabels - labelsPerView);
 
-  // Update visible organ data whenever the chart data or start index changes
-  useEffect(() => {
-    updateVisibleOrganData();
-  }, [chartData, labelStartIndex]);
-  
-  // Create a filtered version of the organ data with only the visible labels
-  const updateVisibleOrganData = () => {
-    if (!organsChartData || !organsChartData.labels || organsChartData.labels.length === 0) {
-      setVisibleOrganData(null);
-      return;
-    }
-    
-    const visibleLabels = organsChartData.labels.slice(
-      labelStartIndex, 
-      labelStartIndex + labelsPerView
-    );
-    
-    const visibleData = organsChartData.datasets.map(dataset => ({
-      ...dataset,
-      data: dataset.data.slice(
-        labelStartIndex, 
-        labelStartIndex + labelsPerView
-      ),
-      backgroundColor: dataset.backgroundColor.slice(
-        labelStartIndex,
-        labelStartIndex + labelsPerView
-      )
-    }));
-    
-    setVisibleOrganData({
-      labels: visibleLabels,
-      datasets: visibleData
-    });
-  };
-  
-  // Navigation functions for organ chart
-  const showPreviousLabels = () => {
-    setLabelStartIndex(Math.max(0, labelStartIndex - labelsPerView));
-  };
-  
-  const showNextLabels = () => {
-    setLabelStartIndex(Math.min(maxStartIndex, labelStartIndex + labelsPerView));
-  };
-  
-  // Check if navigation buttons should be enabled
-  const canGoBack = labelStartIndex > 0;
-  const canGoForward = labelStartIndex < maxStartIndex;
-
-  // Transform Articles by Status data for the pie chart
-  const statusLabels = chartData?.ArticlesbyStatus ? Object.keys(chartData.ArticlesbyStatus) : [];
-  const statusColors = {
-    Verified: "#10b981", // Green
-    Unverified: "#f59e0b", // Orange
-    Draft: "#fef08a", // Light Yellow
-    In_review: "#6366f1", // Indigo
+  const handleYearClick = (yearIndex) => {
+    const year = articlesByYearData.labels[yearIndex];
+    window.open(`${process.env.REACT_APP_WEB_BASE_URL}/articles?year=${encodeURIComponent(year)}`, "_blank");
   };
 
-  // Format label function to convert underscore to spaces and capitalize
-  const formatLabel = (label) => {
-    if (!label) return '';
-    // Replace underscores with spaces
-    const withSpaces = label.replace(/_/g, ' ');
-    // Capitalize each word
-    return withSpaces
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+  const handleTopicClick = (topicIndex) => {
+    const researchTopic = researchTopicChartData.labels[topicIndex];
+    window.open(`${process.env.REACT_APP_WEB_BASE_URL}/articles?researchTopics=${encodeURIComponent(researchTopic)}`, "_blank");
   };
 
-  const pieChartData = {
-    labels: statusLabels,
-    datasets: [
-      {
-        label: "Article Status",
-        data: statusLabels.map(label => chartData?.ArticlesbyStatus[label] || 0),
-        backgroundColor: statusLabels.map(label => statusColors[label] || generateChartColors(1)[0]),
-        borderWidth: 2,
-        borderColor: "#ffffff",
-      },
-    ],
+  const handleStudyTypeClick = (studyType) => {
+    window.open(`${process.env.REACT_APP_WEB_BASE_URL}/articles?studyTypes=${encodeURIComponent(studyType)}`, "_blank");
   };
 
-  // Transform Research by Species data for the doughnut chart
-  const speciesChartData = {
-    labels: chartData?.ResearchbySpecies ? Object.keys(chartData.ResearchbySpecies) : [],
-    datasets: [
-      {
-        label: "Research by Species",
-        data: chartData?.ResearchbySpecies ? Object.values(chartData.ResearchbySpecies) : [],
-        backgroundColor: generateChartColors(
-          chartData?.ResearchbySpecies ? Object.keys(chartData.ResearchbySpecies).length : 0
-        ),
-        borderWidth: 2,
-        borderColor: "#ffffff",
-      },
-    ],
+  const handleSpeciesClick = (specie) => {
+    window.open(`${process.env.REACT_APP_WEB_BASE_URL}/articles?species=${encodeURIComponent(specie)}`, "_blank");
   };
 
-  // Transform Study Types data for the doughnut chart
-  const studyTypeChartData = {
-    labels: chartData?.StudyTypes ? Object.keys(chartData.StudyTypes) : [],
-    datasets: [
-      {
-        label: "Study Types",
-        data: chartData?.StudyTypes ? Object.values(chartData.StudyTypes) : [],
-        backgroundColor: generateChartColors(
-          chartData?.StudyTypes ? Object.keys(chartData.StudyTypes).length : 0
-        ),
-        borderWidth: 2,
-        borderColor: "#ffffff",
-      },
-    ],
-  };
-
-  // Transform Research by Topic data for the bar chart - Sort by value
-  const topicData = chartData?.ResearchbyTopic 
-    ? Object.entries(chartData.ResearchbyTopic)
-        .sort((a, b) => b[1] - a[1]) // Sort by count descending
-        .slice(0, 10) // Get top 10
-        .reduce((obj, [key, value]) => {
-          obj.labels.push(key);
-          obj.data.push(value);
-          return obj;
-        }, { labels: [], data: [] })
-    : { labels: [], data: [] };
-
-  const topicBarChartData = {
-    labels: topicData.labels,
-    datasets: [
-      {
-        label: "Articles",
-        data: topicData.data,
-        backgroundColor: generateChartColors(topicData.labels.length),
-        borderRadius: 8,
-        maxBarThickness: 25,
-      },
-    ],
-  };
-
-  // Shared tooltip options for consistent styling
-  const tooltipOptions = {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    titleColor: '#334155',
-    bodyColor: '#334155',
-    borderColor: '#e2e8f0',
-    borderWidth: 1,
-    displayColors: true,
-    boxPadding: 6,
-    usePointStyle: true,
-    padding: 12,
-    cornerRadius: 8,
-    titleFont: { weight: 'bold', size: 14 },
-    bodyFont: { size: 13 },
+  const handleOrganClick = (organ) => {
+    window.open(`${process.env.REACT_APP_WEB_BASE_URL}/articles?organs=${encodeURIComponent(organ)}`, "_blank");
   };
 
   return (
-    <div className="my-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <ChartCard 
-          title="Articles by Status" 
-          info="Distribution of articles by verification status"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 h-72">
-              <Pie 
-                data={pieChartData} 
-                options={{ 
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  plugins: {
-                    legend: {
-                      display: false
-                    },
-                    tooltip: {
-                      ...tooltipOptions,
-                      callbacks: {
-                        label: (context) => {
-                          // Get the original label
-                          const rawLabel = context.label || "";
-                          
-                          // Format the label - replace underscores with spaces and capitalize
-                          const formattedLabel = formatLabel(rawLabel);
-                          
-                          const value = context.raw || 0;
-                          const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                          const percentage = Math.round((value / total) * 100);
-                          return `${formattedLabel}: ${value} (${percentage}%)`;
-                        }
-                      }
-                    }
-                  },
-                  elements: {
-                    arc: {
-                      borderWidth: 2,
-                    }
-                  }
-                }} 
-              />
-            </div>
-            <div className="flex items-center">
-              <EnhancedLegend 
-                labels={pieChartData.labels} 
-                backgroundColor={pieChartData.datasets[0].backgroundColor} 
-              />
-            </div>
-          </div>
-        </ChartCard>
-        
-        <ChartCard 
-          title="Total Articles Over Time" 
-          info="Number of articles published per year"
-        >
-          <div className="h-72">
-            <Line 
-              data={lineChartData} 
-              options={{ 
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                    ticks: {
-                      precision: 0
-                    },
-                    grid: {
-                      color: 'rgba(226, 232, 240, 0.5)',
-                    }
-                  },
-                  x: {
-                    grid: {
-                      display: false
-                    }
-                  }
-                },
-                plugins: {
-                  legend: {
-                    display: false
-                  },
-                  tooltip: {
-                    ...tooltipOptions,
-                    callbacks: {
-                      title: (context) => `Year: ${context[0].label}`,
-                      label: (context) => `Articles: ${context.raw}`
-                    }
-                  }
-                }
-              }} 
-            />
-          </div>
-        </ChartCard>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <ChartCard 
-          title="Research by Species" 
-          info="Distribution of research by species studied"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 h-72">
-              <Doughnut 
-                data={speciesChartData} 
-                options={{ 
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  cutout: '70%',
-                  plugins: {
-                    legend: {
-                      display: false
-                    },
-                    tooltip: {
-                      ...tooltipOptions,
-                      callbacks: {
-                        label: (context) => {
-                          const label = context.label || "";
-                          const value = context.raw || 0;
-                          const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                          const percentage = ((value / total) * 100).toFixed(1);
-                          return `${label}: ${value} (${percentage}%)`;
-                        }
-                      }
-                    }
-                  }
-                }} 
-              />
-            </div>
-            <div className="flex items-center">
-              <EnhancedLegend 
-                labels={speciesChartData.labels} 
-                backgroundColor={speciesChartData.datasets[0].backgroundColor}
-              />
-            </div>
-          </div>
-        </ChartCard>
-
-        <ChartCard 
-          title="Study Types" 
-          info="Distribution of articles by methodology"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 h-72">
-              <Doughnut 
-                data={studyTypeChartData} 
-                options={{ 
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  cutout: '70%',
-                  plugins: {
-                    legend: {
-                      display: false
-                    },
-                    tooltip: {
-                      ...tooltipOptions,
-                      callbacks: {
-                        label: (context) => {
-                          const label = context.label || "";
-                          const value = context.raw || 0;
-                          const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                          const percentage = ((value / total) * 100).toFixed(1);
-                          return `${label}: ${value} (${percentage}%)`;
-                        }
-                      }
-                    }
-                  }
-                }} 
-              />
-            </div>
-            <div className="flex items-center">
-              <EnhancedLegend 
-                labels={studyTypeChartData.labels} 
-                backgroundColor={studyTypeChartData.datasets[0].backgroundColor}
-              />
-            </div>
-          </div>
-        </ChartCard>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <ChartCard 
-          title="Top Research Topics" 
-          info="Most common research topics (top 10)"
-        >
-          <div className="h-80">
-            <Bar 
-              data={topicBarChartData} 
-              options={{ 
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: {
-                    display: false
-                  },
-                  tooltip: {
-                    ...tooltipOptions,
-                    callbacks: {
-                      label: (context) => `Articles: ${context.raw}`
-                    }
-                  }
-                },
-                scales: {
-                  x: {
-                    beginAtZero: true,
-                    ticks: {
-                      precision: 0
-                    },
-                    grid: {
-                      color: 'rgba(226, 232, 240, 0.5)',
-                    }
-                  },
-                  y: {
-                    grid: {
-                      display: false
-                    }
-                  }
-                }
-              }} 
-            />
-          </div>
-        </ChartCard>
-
-        <ChartCard 
-          title="Key Body Structures" 
-          info="Distribution of research by organ studied"
-        >
-          <div className="h-80">
-            {visibleOrganData ? (
-              <div className="h-72">
-                <Bar
-                  data={visibleOrganData}
-                  options={{
-                    indexAxis: "y",
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                      legend: {
-                        display: false
-                      },
-                      tooltip: {
-                        ...tooltipOptions,
-                        callbacks: {
-                          title: (context) => {
-                            const tooltipIndex = context[0].dataIndex + labelStartIndex;
-                            return organsChartData.labels[tooltipIndex];
-                          },
-                          label: (context) => `Articles: ${context.raw}`
-                        }
-                      }
-                    },
-                    scales: {
-                      x: {
-                        beginAtZero: true,
-                        ticks: {
-                          precision: 0
-                        },
-                        grid: {
-                          color: 'rgba(226, 232, 240, 0.5)',
-                        }
-                      },
-                      y: {
-                        grid: {
-                          display: false
-                        }
-                      }
-                    }
-                  }}
-                />
-
-                {/* Pagination controls */}
-                {totalLabels > labelsPerView && (
-                  <div className="flex justify-between items-center mt-4">
-                    <button 
-                      className={`flex items-center px-4 py-2 rounded-lg border ${
-                        canGoBack 
-                          ? 'border-blue-500 text-blue-600 hover:bg-blue-50' 
-                          : 'border-gray-200 text-gray-400 cursor-not-allowed'
-                      } transition-colors`}
-                      onClick={showPreviousLabels}
-                      disabled={!canGoBack}
-                    >
-                      <FiChevronLeft className="h-5 w-5 mr-1" />
-                      <span>Previous</span>
-                    </button>
-                    
-                    <div className="text-sm font-semibold bg-gray-100 px-4 py-2 rounded-lg">
-                      {totalLabels > 0 ? (
-                        `${labelStartIndex + 1}-${Math.min(labelStartIndex + labelsPerView, totalLabels)} of ${totalLabels}`
-                      ) : (
-                        "No data available"
-                      )}
-                    </div>
-                    
-                    <button 
-                      className={`flex items-center px-4 py-2 rounded-lg border ${
-                        canGoForward 
-                          ? 'border-blue-500 text-blue-600 hover:bg-blue-50' 
-                          : 'border-gray-200 text-gray-400 cursor-not-allowed'
-                      } transition-colors`}
-                      onClick={showNextLabels}
-                      disabled={!canGoForward}
-                    >
-                      <span>Next</span>
-                      <FiChevronRight className="h-5 w-5 ml-1" />
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="h-full flex items-center justify-center">
-                <div className="flex flex-col items-center">
-                  <svg className="animate-spin h-10 w-10 text-blue-500 mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  <p className="text-gray-600 font-medium">Loading organ data...</p>
+      <div className="space-y-8">
+        {/* Articles by Year + Research Topic */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Articles by Year */}
+          <div className="bg-white p-5 rounded-2xl shadow-lg flex flex-col h-[460px]">
+            <div className="flex justify-between items-start mb-5">
+              <div>
+                <div className="flex items-center gap-2 text-primary mb-1">
+                  <FiTrendingUp className="h-5 w-5" />
+                  <p className="text-sm font-semibold">Growth Trend</p>
                 </div>
+
+                <h2 className="text-xl font-bold">Articles by Year</h2>
+
+                <p className="text-sm text-gray-500 mt-1">
+                  Shows how research publication volume changes over time.
+                </p>
               </div>
-            )}
+            </div>
+
+            <div className="flex-1">
+              {articlesByYear.length > 0 ? (
+                  <Line
+                      data={articlesByYearData}
+                      options={{
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        onClick: (e, elements) => {
+                          if (elements.length > 0) {
+                            handleYearClick(elements[0].index);
+                          }
+                        },
+                        plugins: {
+                          legend: { display: false },
+                          tooltip: {
+                            callbacks: {
+                              title: (context) => `Year: ${context[0].label}`,
+                              label: (context) => `Articles: ${context.parsed.y}`,
+                            },
+                          },
+                        },
+                        scales: {
+                          x: {
+                            title: {
+                              display: true,
+                              text: "Year",
+                              font: { weight: "bold" },
+                            },
+                            grid: { display: false },
+                            ticks: {
+                              autoSkip: false,
+                              maxRotation: 45,
+                              minRotation: 45,
+                            },
+                          },
+                          y: {
+                            beginAtZero: true,
+                            title: {
+                              display: true,
+                              text: "Number of Articles",
+                              font: { weight: "bold" },
+                            },
+                            grid: { color: "#f0f0f0" },
+                            ticks: { precision: 0 },
+                          },
+                        },
+                      }}
+                  />
+              ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <p className="text-gray-500">
+                      No yearly article data available
+                    </p>
+                  </div>
+              )}
+            </div>
           </div>
-        </ChartCard>
+
+          {/* Research Topic */}
+          <div className="bg-white p-5 rounded-2xl shadow-lg flex flex-col h-[460px]">
+            <div className="flex justify-between items-start mb-5">
+              <div>
+                <div className="flex items-center gap-2 text-primary mb-1">
+                  <FiBarChart2 className="h-5 w-5" />
+                  <p className="text-sm font-semibold">Top Research Areas</p>
+                </div>
+
+                <h2 className="text-xl font-bold">Top 10 Research Topics</h2>
+
+                <p className="text-sm text-gray-500 mt-1">
+                  Most studied research areas ranked by article count.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex-1">
+              {topResearchTopics.length > 0 ? (
+                  <Bar
+                      data={researchTopicChartData}
+                      options={{
+                        indexAxis: "y",
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        onClick: (e, elements) => {
+                          if (elements.length > 0) {
+                            handleTopicClick(elements[0].index);
+                          }
+                        },
+                        plugins: {
+                          legend: { display: false },
+                          tooltip: {
+                            callbacks: {
+                              label: (context) => `${context.parsed.x} articles`,
+                            },
+                          },
+                        },
+                        scales: {
+                          x: {
+                            beginAtZero: true,
+                            grid: { color: "#f0f0f0" },
+                            ticks: { precision: 0 },
+                            title: {
+                              display: true,
+                              text: "Number of Articles",
+                              font: { weight: "bold" },
+                            },
+                          },
+                          y: {
+                            grid: { display: false },
+                            ticks: {
+                              autoSkip: false,
+                              font: { size: 11 },
+                            },
+                          },
+                        },
+                      }}
+                  />
+              ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <p className="text-gray-500">
+                      No research topic data available
+                    </p>
+                  </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Study Type Progress Cards */}
+        <div className="bg-white p-5 rounded-2xl shadow-lg">
+          <div className="flex justify-between items-start mb-6">
+            <div>
+              <div className="flex items-center gap-2 text-primary mb-1">
+                <FiLayers className="h-5 w-5" />
+                <p className="text-sm font-semibold">Study Classification</p>
+              </div>
+
+              <h2 className="text-xl font-bold">Study by Type</h2>
+
+              <p className="text-sm text-gray-500 mt-1">
+                A quick breakdown of the main study types in the database.
+              </p>
+            </div>
+          </div>
+
+          {studyTypes.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                {studyTypes.map((item, index) => {
+                  const percentage = totalStudyTypes
+                      ? ((item.value / totalStudyTypes) * 100).toFixed(1)
+                      : 0;
+
+                  return (
+                      <button
+                          key={item.name}
+                          onClick={() => handleStudyTypeClick(item.name)}
+                          className="text-left p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md transition-all"
+                      >
+                        <div className="flex justify-between items-start gap-3 mb-3">
+                          <div>
+                            <h3 className="font-semibold text-gray-800">
+                              {item.name}
+                            </h3>
+
+                            <p className="text-sm text-gray-500 mt-1">
+                              {item.value} articles
+                            </p>
+                          </div>
+
+                          <span className="text-sm font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">
+                      {percentage}%
+                    </span>
+                        </div>
+
+                        <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div
+                              className="h-full rounded-full"
+                              style={{
+                                width: `${percentage}%`,
+                                backgroundColor:
+                                    generateContrastColors(studyTypes.length)[index],
+                              }}
+                          />
+                        </div>
+                      </button>
+                  );
+                })}
+              </div>
+          ) : (
+              <div className="h-32 flex items-center justify-center">
+                <p className="text-gray-500">No study type data available</p>
+              </div>
+          )}
+        </div>
+
+        {/* Species Icon/Stat Cards */}
+        <div className="bg-white p-5 rounded-2xl shadow-lg">
+          <div className="flex justify-between items-start mb-6">
+            <div>
+              <div className="flex items-center gap-2 text-primary mb-1">
+                <FiUsers className="h-5 w-5" />
+                <p className="text-sm font-semibold">Study Subjects</p>
+              </div>
+
+              <h2 className="text-xl font-bold">Study by Species</h2>
+
+              <p className="text-sm text-gray-500 mt-1">
+                View which species are most commonly used in molecular hydrogen
+                studies.
+              </p>
+            </div>
+          </div>
+
+          {species.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+                {species.slice(0, 10).map((item, index) => {
+                  const percentage = totalSpecies
+                      ? ((item.value / totalSpecies) * 100).toFixed(1)
+                      : 0;
+
+                  const strength = Math.max(
+                      (item.value / maxSpeciesValue) * 100,
+                      8
+                  );
+
+                  return (
+                      <button
+                          key={item.name}
+                          onClick={() => handleSpeciesClick(item.name)}
+                          className="group p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md transition-all text-left"
+                      >
+                        <div
+                            className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 text-white"
+                            style={{
+                              backgroundColor:
+                                  generateContrastColors(species.length)[index],
+                            }}
+                        >
+                          <FiUsers className="h-5 w-5" />
+                        </div>
+
+                        <h3 className="font-semibold text-gray-800 truncate">
+                          {item.name}
+                        </h3>
+
+                        <p className="text-2xl font-bold text-primary mt-2">
+                          {item.value}
+                        </p>
+
+                        <p className="text-xs text-gray-500 mt-1">
+                          {percentage}% of species studies
+                        </p>
+
+                        <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden mt-3">
+                          <div
+                              className="h-full bg-primary rounded-full"
+                              style={{ width: `${strength}%` }}
+                          />
+                        </div>
+                      </button>
+                  );
+                })}
+              </div>
+          ) : (
+              <div className="h-32 flex items-center justify-center">
+                <p className="text-gray-500">No species data available</p>
+              </div>
+          )}
+        </div>
+
+        {/* Organ Explorer */}
+        <div className="bg-white p-5 rounded-2xl shadow-lg">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5 mb-6">
+            <div>
+              <div className="flex items-center gap-2 text-primary mb-1">
+                <FiGrid className="h-5 w-5" />
+                <p className="text-sm font-semibold">Interactive Explorer</p>
+              </div>
+
+              <h2 className="text-xl font-bold">Study by Organ</h2>
+
+              <p className="text-sm text-gray-500 mt-1 max-w-2xl">
+                Click any organ tag to explore related research articles. Bigger
+                numbers indicate more available studies.
+              </p>
+            </div>
+          </div>
+
+          {visibleOrgans.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {visibleOrgans.map((item, index) => {
+                    const strength = Math.max(
+                        (item.count / maxOrganValue) * 100,
+                        10
+                    );
+
+                    return (
+                        <button
+                            key={item.name}
+                            onClick={() => handleOrganClick(item.name)}
+                            className="group p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-md transition-all text-left"
+                        >
+                          <div className="flex justify-between items-center gap-3 mb-3">
+                            <h3 className="font-semibold text-gray-800 truncate">
+                              {item.name}
+                            </h3>
+
+                            <div className="flex items-center gap-2">
+                        <span className="text-sm font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">
+                          {item.count}
+                        </span>
+
+                              <FiArrowRight className="h-4 w-4 text-gray-400 group-hover:text-primary transition-colors" />
+                            </div>
+                          </div>
+
+                          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div
+                                className="h-full rounded-full"
+                                style={{
+                                  width: `${strength}%`,
+                                  backgroundColor:
+                                      generateContrastColors(visibleOrgans.length)[index],
+                                }}
+                            />
+                          </div>
+                        </button>
+                    );
+                  })}
+                </div>
+
+                {organs.length > 18 && (
+                    <div className="flex justify-center mt-6">
+                      <button
+                          className="px-5 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                          onClick={() => setShowAllOrgans((prev) => !prev)}
+                      >
+                        {showAllOrgans ? "Show Less Organs" : "Show All Organs"}
+                      </button>
+                    </div>
+                )}
+              </>
+          ) : (
+              <div className="h-32 flex items-center justify-center">
+                <p className="text-gray-500">No organ data available</p>
+              </div>
+          )}
+        </div>
       </div>
-    </div>
   );
 };
 
