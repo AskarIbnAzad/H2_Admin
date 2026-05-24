@@ -23,6 +23,13 @@ const DataManager = () => {
 
   const screens = [
     {
+      name: "Header",
+      icon: <FaFileAlt />,
+      link: "/navigation",
+      bgColor: "from-teal-50 to-teal-100",
+      hoverBg: "from-teal-500 to-teal-600",
+    },
+    {
       name: "Article Type",
       icon: <FaFileAlt />,
       link: "/article-type",

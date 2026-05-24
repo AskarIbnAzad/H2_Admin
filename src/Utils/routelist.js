@@ -16,6 +16,7 @@ import AuthorsLibrary from "../Screen/DashboardScreens/AuthorsLibrary/AuthorsLib
 import CountryTable from "../Screen/DashboardScreens/CountryPage/CountryPage";
 import DataManager from "../Screen/DataManager/DataManager";
 import ArticleTypeTable from "../Screen/DashboardScreens/ArticleTypeTable/ArticleTypeTable";
+import Navigation from "../Screen/DashboardScreens/Navigation/Navigation";
 import ResearchTopicTable from "../Screen/DashboardScreens/ResearchTopicTable/ResearchTopicTable";
 import PhysiologicalSystemsTable from "../Screen/DashboardScreens/PhysiologicalSystemsTable/PhysiologicalSystemsTable";
 import OrgansTable from "../Screen/DashboardScreens/OrgansTable/OrgansTable";
@@ -219,6 +220,12 @@ export const routelistScreens = [
     screenName: "Roles",
     linkTo: "/roles",
     element: <RolesTable />,
+    allowedRoles: [ROLE.ADMIN],
+  },
+  {
+    screenName: "Navigation",
+    linkTo: "/navigation",
+    element: <Navigation />,
     allowedRoles: [ROLE.ADMIN],
   },
   {
