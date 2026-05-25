@@ -15,7 +15,7 @@ import {
   FaUserShield,
   FaLayerGroup,
   FaTag,
-  FaDisease,
+  FaDisease, FaBars,
 } from "react-icons/fa";
 
 const DataManager = () => {
@@ -24,7 +24,7 @@ const DataManager = () => {
   const screens = [
     {
       name: "Header",
-      icon: <FaFileAlt />,
+      icon: <FaBars />,
       link: "/navigation",
       bgColor: "from-teal-50 to-teal-100",
       hoverBg: "from-teal-500 to-teal-600",
