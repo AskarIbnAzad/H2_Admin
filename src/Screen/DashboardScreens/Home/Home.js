@@ -142,7 +142,7 @@ const Home = () => {
   return (
       <div style={{ marginTop: "20px" }}>
         <Stack spacing={3}>
-          <DashboardHome data={cardData} refetchData={fetchHomePageData} />
+          <DashboardHome data={homeData} refetchData={fetchHomePageData} />
 
           <div className="max-w-[1200px] 1366px:max-w-[1280px] 1440px:max-w-[1360px] 1920px:max-w-[1800px] mx-auto p-4">
             <DashboardCharts data={dashboardChartData} />

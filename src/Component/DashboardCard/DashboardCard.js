@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { apiHandle } from "../../Config/ApiHandle/apiHandle";
 import {
- 
+
   PlusOutlined,
 } from "@ant-design/icons";
 const DashboardHome = ({ data, refetchData }) => {
@@ -64,7 +64,7 @@ const DashboardHome = ({ data, refetchData }) => {
         const hours = Math.floor(totalSeconds / 3600);
         const minutes = Math.floor((totalSeconds % 3600) / 60);
         const seconds = totalSeconds % 60;
-        
+
         return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
 
@@ -80,13 +80,13 @@ const DashboardHome = ({ data, refetchData }) => {
             const displayInterval = setInterval(() => {
                 const now = Date.now();
                 const timeSinceLastActivity = now - lastActivityRef.current;
-                
+
                 // Calculate current session time if user is active
                 let currentSessionTime = 0;
                 if (timeSinceLastActivity < 120000) { // 2 minutes
                     currentSessionTime = Math.floor((now - sessionStartRef.current) / 1000);
                 }
-                
+
                 // Display: backend time + current session time
                 const backendTimeSeconds = data?.time_spent ? parseTimeToSeconds(data.time_spent) : 0;
                 const totalDisplayTime = backendTimeSeconds + currentSessionTime;
@@ -105,27 +105,25 @@ const DashboardHome = ({ data, refetchData }) => {
                 try {
                     const now = Date.now();
                     const timeSinceLastActivity = now - lastActivityRef.current;
-                    
+
                     // Calculate session time to send to backend
                     let sessionTimeToSend = 0;
                     if (timeSinceLastActivity < 120000) { // Less than 2 minutes of inactivity
                         sessionTimeToSend = Math.floor((now - sessionStartRef.current) / 1000);
                     }
-                    
+
                     // Reset session tracking for next interval
                     sessionStartRef.current = now;
                     lastActivityRef.current = now;
-                    
+
                     // Only send if there's time to add
                     if (sessionTimeToSend > 0) {
                         const timeToAddFormatted = formatTimeForAPI(sessionTimeToSend);
-                        
+
                         await apiHandle.post('update-time', {
                             time_spent: timeToAddFormatted, // Send only the increment
                         });
-                        
-                        console.log(`Session time sent: ${timeToAddFormatted} (${formatTimeUserFriendly(sessionTimeToSend)})`);
-                        
+
                         // Refetch data after successful update
                         if (refetchData && typeof refetchData === 'function') {
                             await refetchData();
@@ -134,7 +132,7 @@ const DashboardHome = ({ data, refetchData }) => {
                         console.log('No active time to send (user was inactive)');
                     }
                 } catch (error) {
-                    console.error('Error updating time:', error);
+                    console.error('Error updating time:');
                 }
             };
 
@@ -142,18 +140,18 @@ const DashboardHome = ({ data, refetchData }) => {
             const handleBeforeUnload = async () => {
                 const now = Date.now();
                 const timeSinceLastActivity = now - lastActivityRef.current;
-                
+
                 // Calculate final session time
                 let finalSessionTime = 0;
                 if (timeSinceLastActivity < 120000) { // Less than 2 minutes of inactivity
                     finalSessionTime = Math.floor((now - sessionStartRef.current) / 1000);
                 }
-                
+
                 // Send final time if there's any to save
                 if (finalSessionTime > 0) {
                     const timeToAddFormatted = formatTimeForAPI(finalSessionTime);
-                    
-                    // Use sendBeacon for reliable delivery on page unload            
+
+                    // Use sendBeacon for reliable delivery on page unload
                     if (navigator.sendBeacon) {
                         const formData = new FormData();
                         formData.append('time_spent', timeToAddFormatted);
@@ -168,13 +166,12 @@ const DashboardHome = ({ data, refetchData }) => {
                             console.error('Error saving final time:', error);
                         }
                     }
-                    console.log(`Final session time saved on unload: ${timeToAddFormatted}`);
                 }
             };
 
             // Activity event listeners
             const activityEvents = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
-            
+
             activityEvents.forEach(event => {
                 document.addEventListener(event, handleUserActivity, true);
             });
@@ -185,12 +182,12 @@ const DashboardHome = ({ data, refetchData }) => {
             // Start tracking time
             sessionStartRef.current = Date.now();
             lastActivityRef.current = Date.now();
-            
+
             // Set up interval to call API every 2 minutes (120000 ms)
             timeTrackingRef.current = setInterval(() => {
                 updateTimeSpent();
             }, 120000); // 2 minutes
-            
+
             // Cleanup on unmount
             return () => {
                 if (timeTrackingRef.current) {
@@ -198,7 +195,7 @@ const DashboardHome = ({ data, refetchData }) => {
                     // Send final update when component unmounts
                     updateTimeSpent();
                 }
-                
+
                 // Remove activity listeners
                 activityEvents.forEach(event => {
                     document.removeEventListener(event, handleUserActivity, true);
@@ -210,10 +207,11 @@ const DashboardHome = ({ data, refetchData }) => {
         }
     }, [user?.role, user?.id, user?.token, refetchData, data?.time_spent]);
 
+
     const jobsData = user?.role === "Researcher" ? [
         {
             wave_img: blue_wave,
-            count: data?.total_studies,
+            count: data?.totalStudies,
             title: "Number Of",
             second_txt: "Articles",
             backgroundClr: `linear-gradient(135deg, #004C78 30%, #3498DB 100%)`,
@@ -221,8 +219,7 @@ const DashboardHome = ({ data, refetchData }) => {
         },
         {
             wave_img: blue_wave,
-            count: data?.my_articles_count
- || 0,
+            count: data?.my_articles_count || 0,
             title: "Number Of",
             second_txt: "Articles I’ve submitted",
             backgroundClr: `linear-gradient(135deg, #004C78 30%, #3498DB 100%)`,
@@ -239,7 +236,7 @@ const DashboardHome = ({ data, refetchData }) => {
     ] : [
         {
             wave_img: blue_wave,
-            count: data?.total_studies,
+            count: data?.totalStudies,
             title: "Number Of",
             second_txt: "Articles",
             backgroundClr: `linear-gradient(135deg, #004C78 30%, #3498DB 100%)`,
@@ -247,7 +244,7 @@ const DashboardHome = ({ data, refetchData }) => {
         },
         {
             wave_img: blue_wave,
-            count: data?.total_researcher,
+            count: data?.totalResearcher,
             title: "Number Of",
             second_txt: "Researchers",
             backgroundClr: `linear-gradient(135deg, #004C78 30%, #3498DB 100%)`,
@@ -255,7 +252,7 @@ const DashboardHome = ({ data, refetchData }) => {
         },
         {
             wave_img: blue_wave,
-            count: data?.user_count,
+            count: data?.userCount,
             title: "Number Of",
             second_txt: "Users",
             backgroundClr: `linear-gradient(135deg, #004C78 30%, #3498DB 100%)`,
@@ -264,7 +261,6 @@ const DashboardHome = ({ data, refetchData }) => {
     ];
 
     const navigatehandle = (item) => {
-        // console.log("navigatehandle", item);
         navigation(item)
 
     }
