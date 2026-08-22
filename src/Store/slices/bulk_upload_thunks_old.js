@@ -1,6 +1,6 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setBulkProgress } from './bulk_upload_slice';
+import { setBulkProgress, resetBulkProgress } from './bulk_upload_slice';
 import { addLogEntry } from './bulk_upload_log_slice';
 import { apiHandle } from '../../Config/ApiHandle/apiHandle';
 
@@ -30,42 +30,16 @@ export const bulkUploadFilesThunk = createAsyncThunk(
   async ({ files, onError, onComplete }, { dispatch }) => {
     let successCount = 0;
     let failedCount = 0;
-
-    const appendNestedFormData = (formData, key, value) => {
-      if (value && typeof value === 'object' && !Array.isArray(value)) {
-        Object.entries(value).forEach(([nestedKey, nestedValue]) => {
-          appendNestedFormData(formData, `${key}[${nestedKey}]`, nestedValue);
-        });
-        return;
-      }
-
-      formData.append(key, value);
-    };
-
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const formData = new FormData();
-
       formData.append('file', file);
-
-      const extractedData = {
-        publicData: {
-          title: file?.name ? file.name.replace(/\.pdf$/i, '') : 'Untitled Article',
-          source: 'bulk_upload',
-        },
-        articleGeneralData: {
-          year: new Date().getFullYear(),
-        },
-      };
-
-      appendNestedFormData(formData, 'extracted_data', extractedData);
-
       try {
         const response = await apiHandle.post('process-and-submit', formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
-
         successCount++;
+        // Save pdf_url if present
         const pdf_url = response?.data?.pdf_url;
         dispatch(addLogEntry({ fileName: file.name, status: 'success', pdf_url }));
       } catch (err) {
@@ -74,11 +48,10 @@ export const bulkUploadFilesThunk = createAsyncThunk(
         dispatch(addLogEntry({ fileName: file.name, status: 'failed', error: errorMsg, exists, pdf_url }));
         if (onError) onError('Some files failed to upload.');
       }
-
+      // Update progress after each file
       const percent = Math.round(((i + 1) / files.length) * 100);
       dispatch(setBulkProgress(percent));
     }
-
     if (onComplete) onComplete();
     return { successCount, failedCount };
   }
