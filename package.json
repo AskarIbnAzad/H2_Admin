@@ -2,7 +2,7 @@
   "name": "h2research",
   "version": "0.1.0",
   "private": false,
-  "homepage": "http://localhost:3000/admin",
+  "homepage": "/admin",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
